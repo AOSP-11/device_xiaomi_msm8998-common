@@ -113,7 +113,6 @@ on init
 
 on fs
     mount_all /vendor/etc/fstab.qcom --early
-    swapon_all /vendor/etc/fstab.qcom
 
     restorecon_recursive /mnt/vendor/persist
     mkdir /mnt/vendor/persist/alarm 0770 system system
@@ -180,6 +179,10 @@ on property:sys.boot_completed=1
     write /dev/cpuset/restricted/cpus 0-3
     write /dev/cpuset/camera-daemon/cpus 0-3
 
+    # Enable ZRAM on boot_complete
+    swapon_all /vendor/etc/fstab.qcom
+
+    # Run post poot script
     start vendor.qcom-post-boot
 
 on charger
