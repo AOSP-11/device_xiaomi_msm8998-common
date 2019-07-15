@@ -115,6 +115,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.camera.hal1.packagelist=com.tencent.mm,com.eg.android.AlipayGphone,com.android.camera \
     persist.camera.privapp.list=com.android.camera,com.google.android.GoogleCamera,org.lineageos.snap
 
+# Charger
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.charger.enable_suspend=true
+
 # CNE
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.cne.feature=1
