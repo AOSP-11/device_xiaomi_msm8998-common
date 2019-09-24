@@ -1,0 +1,18 @@
+# Fingerprint
+type fingerprint_persist_file, file_type;
+type fingerprint_sysfs, sysfs_type, fs_type;
+
+# Input devices
+type idc_file, file_type, vendor_file_type;
+type keylayout_file, file_type, vendor_file_type;
+
+# Power
+type debugfs_wlan, debugfs_type, fs_type;
+type debugfs_system_stats, debugfs_type, fs_type;
+
+# Remote storage
+type debugfs_rmts, debugfs_type, fs_type;
+
+# Thermal engine
+type thermal_data_file, data_file_type, file_type;
+type thermal_decrypt_file, core_data_file_type, data_file_type, file_type;
