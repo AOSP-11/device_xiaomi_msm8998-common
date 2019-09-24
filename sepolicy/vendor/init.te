@@ -1,1 +1,8 @@
-allow init adsprpcd_file:filesystem { mount relabelfrom relabelto };
+allow init adsprpcd_file:filesystem { mount relabelfrom relabelto getattr };
+
+allow init firmware_file:filesystem getattr;
+allow init bt_firmware_file:filesystem getattr;
+
+allow init sysfs:file { write setattr };
+allow init sysfs_dm:file { write setattr };
+allow init system_file:file execute_no_trans;
