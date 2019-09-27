@@ -1,12 +1,11 @@
-# Alarm
-ro.alarm_boot                                                 u:object_r:vendor_alarm_boot_prop:s0
-
 # Camera
 camera.dual.mode                                              u:object_r:camera_prop:s0
 camera.IMX298.actuator.update                                 u:object_r:camera_prop:s0
 camera.s5k3m3.actuator.update                                 u:object_r:camera_prop:s0
 persist.camera.                                               u:object_r:camera_prop:s0
 persist.vendor.camera.                                        u:object_r:camera_prop:s0
+camera.hal1.packagelist                                       u:object_r:vendor_camera_prop:s0
+camera.shutter_sound.blacklist                                u:object_r:vendor_camera_prop:s0
 
 # Fingerprint
 persist.vendor.sys.fp.                                        u:object_r:vendor_fp_prop:s0

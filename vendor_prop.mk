@@ -67,11 +67,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.camera.HAL3.enabled=1 \
     persist.vendor.camera.set.afd=4 \
     persist.vendor.dualcam.lpm.enable=1 \
-    vendor.camera.aux.packagelist=com.android.camera,org.lineageos.snap \
-    persist.camera.privapp.list=com.android.camera,com.google.android.GoogleCamera,org.lineageos.snap \
     vidc.enc.dcvs.extra-buff-count=2 \
     camera.shutter_sound.blacklist=com.android.camera \
-    camera.hal1.packagelist=com.tencent.mm,com.eg.android.AlipayGphone,com.android.camera
+    vendor.camera.aux.packagelist=com.android.camera,org.lineageos.snap \
+    vendor.camera.hal1.packagelist=com.tencent.mm,com.eg.android.AlipayGphone,com.android.camera \
+    persist.camera.privapp.list=com.android.camera,com.google.android.GoogleCamera,org.lineageos.snap
 
 # CNE
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -94,6 +94,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.dpm.feature=1 \
     persist.vendor.dpm.nsrm.bkg.evt=3955
+
+# Enforce privapp-permissions whitelist
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.control_privapp_permissions=enforce
 
 # FRP
 PRODUCT_PROPERTY_OVERRIDES += \
