@@ -3,6 +3,10 @@ allow init adsprpcd_file:filesystem { mount relabelfrom relabelto getattr };
 allow init firmware_file:filesystem getattr;
 allow init bt_firmware_file:filesystem getattr;
 
-allow init sysfs:file { write setattr };
 allow init sysfs_dm:file { write setattr };
-allow init system_file:file execute_no_trans;
+
+# 修复错误:SELinux : avc:  denied  { add } for interface=android.hidl.base::IBase sid=u:r:init:s0 pid=5626 scontext=u:r:init:s0 tcontext=u:object_r:hidl_base_hwservice:s0 tclass=hwservice_manager permissive=0
+allow init hidl_base_hwservice:hwservice_manager add;
+
+allow init hal_graphics_composer_default:binder call;
+allow init hwservicemanager:binder transfer;

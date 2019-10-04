@@ -16,3 +16,6 @@ type debugfs_rmts, debugfs_type, fs_type;
 # Thermal engine
 type thermal_data_file, data_file_type, file_type;
 type thermal_decrypt_file, core_data_file_type, data_file_type, file_type;
+
+# Fix:set_selinux_xattr: No such file or directory searching for label "/persist"
+type persist_firmware_file,file_type;

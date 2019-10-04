@@ -1,6 +1,0 @@
-allow hal_camera_default system_file:file { getattr read open };
-allow hal_camera_default cgroup_desc_file:file getattr;
-allow hal_camera_default default_prop:property_service set;
-
-# MIUI Camera
-allow platform_app sensors_panel_prop:file r_file_perms;
