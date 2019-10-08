@@ -10,3 +10,6 @@ allow init hidl_base_hwservice:hwservice_manager add;
 
 allow init hal_graphics_composer_default:binder call;
 allow init hwservicemanager:binder transfer;
+
+# SELinux : avc:  denied  { add } for interface=android.hardware.drm::IDrmFactory sid=u:r:init:s0 pid=5031 scontext=u:r:init:s0 tcontext=u:object_r:hal_drm_hwservice:s0 tclass=hwservice_manager permissive=0
+allow init hal_drm_hwservice:hwservice_manager add;
