@@ -1,1 +1,4 @@
 allow priv_app adsprpcd_file:filesystem getattr;
+allow priv_app mnt_vendor_file:dir create_dir_perms;
+allow priv_app firmware_file:filesystem getattr;
+allow priv_app bt_firmware_file:filesystem getattr;

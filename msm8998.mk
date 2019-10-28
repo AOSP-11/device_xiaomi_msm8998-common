@@ -24,7 +24,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-zh
 
 PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
@@ -165,9 +166,10 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service \
     android.hardware.renderscript@1.0-impl
 
-# DeviceSettings
+# Doze
 PRODUCT_PACKAGES += \
     DeviceSettings \
+    XiaomiDoze
 
 # Device mapper verity
 PRODUCT_SYSTEM_VERITY_PARTITION=/dev/block/bootdevice/by-name/system
@@ -314,6 +316,7 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
+    init.safailnet.rc \
     init.target.rc \
     ueventd.qcom.rc
 
@@ -349,6 +352,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
     android.hardware.sensors@1.0-service
+
+# Soong
+PRODUCT_SOONG_NAMESPACES += \
+    device/xiaomi/msm8998-common
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -395,8 +402,8 @@ PRODUCT_COPY_FILES += \
 # WiFi Display
 PRODUCT_PACKAGES += \
     libaacwrapper \
-    libnl \
-    libmediaextractor
+    libmediaextractorservice \
+    libnl
 
 PRODUCT_BOOT_JARS += \
     WfdCommon

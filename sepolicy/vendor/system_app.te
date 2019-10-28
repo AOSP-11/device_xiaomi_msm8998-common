@@ -1,0 +1,2 @@
+allow system_app sysfs_zram:dir create_dir_perms;
+allow system_app proc_pagetypeinfo:file rwx_file_perms;
