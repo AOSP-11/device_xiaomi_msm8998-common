@@ -54,9 +54,16 @@
 /(vendor|system/vendor)/bin/init\.panel_info\.sh              u:object_r:qti_init_shell_exec:s0
 /(mnt/vendor)/persist/PRSensorData\.txt                       u:object_r:sensors_persist_file:s0
 
+# Sweep2sleep
+/sys/sweep2sleep/sweep2sleep                                  u:object_r:sysfs_sts:s0
+/sys/sweep2sleep/vib_strength                                 u:object_r:sysfs_sts:s0
+
 # Thermal engine
 /data/decrypt\.txt                                            u:object_r:thermal_decrypt_file:s0
 /data/vendor/thermal(/.*)?                                    u:object_r:thermal_data_file:s0
+
+# Vibrator
+/sys/devices/virtual/timed_output/vibrator/(/.*)?             u:object_r:sysfs_vibrator:s0
 
 # Vibrator HAL
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator@1\.1-service\.msm8998 u:object_r:hal_vibrator_default_exec:s0

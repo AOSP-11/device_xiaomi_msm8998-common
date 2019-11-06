@@ -1,2 +1,10 @@
 allow system_app sysfs_zram:dir create_dir_perms;
 allow system_app proc_pagetypeinfo:file rwx_file_perms;
+
+# Parts
+allow system_app sysfs_sectouch:dir create_dir_perms;
+allow system_app sysfs_sectouch:file rwx_file_perms;
+allow system_app sysfs:file rwx_file_perms;
+allow system_app sysfs_sts:file rwx_file_perms;
+allow system_app spectrum_prop:property_service set;
+get_prop(system_app, spectrum_prop);

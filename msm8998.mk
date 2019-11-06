@@ -168,8 +168,8 @@ PRODUCT_PACKAGES += \
 
 # Doze
 PRODUCT_PACKAGES += \
-    DeviceSettings \
-    XiaomiDoze
+    XiaomiDoze \
+    XiaomiParts
 
 # Device mapper verity
 PRODUCT_SYSTEM_VERITY_PARTITION=/dev/block/bootdevice/by-name/system
@@ -313,8 +313,10 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.parts.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
+    init.spectrum.rc \
     init.recovery.qcom.rc \
     init.target.rc \
     ueventd.qcom.rc

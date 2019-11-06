@@ -4,6 +4,9 @@ type vendor_fp_prop, property_type;
 # Sensors
 type sensors_panel_prop, property_type;
 
+# Spectrum
+type spectrum_prop, property_type;
+
 # Thermal engine
 type thermal_prop, property_type;
 

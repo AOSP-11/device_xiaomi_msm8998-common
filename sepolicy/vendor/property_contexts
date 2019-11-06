@@ -24,6 +24,9 @@ ril.fake_bs_flag1                                             u:object_r:system_
 # Sensors
 sys.panel.                                                    u:object_r:sensors_panel_prop:s0
 
+# Spectrum
+persist.spectrum.profile                                      u:object_r:spectrum_prop:s0
+
 # Thermal engine
 persist.sys.thermal.                                          u:object_r:thermal_prop:s0
 sys.thermal.                                                  u:object_r:thermal_prop:s0
