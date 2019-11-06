@@ -27,3 +27,8 @@ on boot
     chown system system /sys/kernel/fast_charge/force_fast_charge
     chmod 0660 /sys/kernel/fast_charge/force_fast_charge
 
+    # Backlight permissions
+    chown system system /sys/class/leds/button-backlight/brightness
+    chown system system /sys/class/leds/button-backlight1/brightness
+    chmod 0660 /sys/class/leds/button-backlight/brightness
+    chmod 0660 /sys/class/leds/button-backlight1/brightness
