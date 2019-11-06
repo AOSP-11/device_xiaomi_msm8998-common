@@ -80,7 +80,8 @@
             android:key="btn_brightness"
             android:iconSpaceReserved="true"
             android:title="@string/btn_led_title"
-            android:summary="@string/btn_led_summary"/>
+            android:summary="@string/btn_led_summary"
+	    android:icon="@drawable/ic_led_btn" />
     </PreferenceCategory>
 
     <PreferenceCategory
