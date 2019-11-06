@@ -52,6 +52,11 @@
     <string name="swap_hw_buttons_title">交换按键</string>
     <string name="swap_hw_buttons_summary">交换最近任务键和返回键位置</string>
 
+    <!-- Button brightness -->
+    <string name="btn_title">按键</string>
+    <string name="btn_led_title">亮度</string>
+    <string name="btn_led_summary">自定义按键亮度</string>
+
     <!-- usb fastcharge -->
     <string name="usb_fastcharge_title">USB 快速充电</string>
     <string name="fastcharge_title">开启 USB 快速充电</string>

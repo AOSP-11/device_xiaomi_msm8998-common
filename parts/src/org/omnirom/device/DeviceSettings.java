@@ -55,6 +55,8 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String KEY_CATEGORY_HW_BUTTONS = "hw_buttons";
     private static final String KEY_CATEGORY_USB_FASTCHARGE = "usb_fastcharge";
 
+    public static final String KEY_BTN_BRIGHTNESS = "btn_brightness";
+
     private static final String SPECTRUM_KEY = "spectrum";
     private static final String SPECTRUM_SYSTEM_PROPERTY = "persist.spectrum.profile";
 

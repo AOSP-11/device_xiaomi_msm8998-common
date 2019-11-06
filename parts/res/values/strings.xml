@@ -52,6 +52,11 @@
     <string name="swap_hw_buttons_title">Swap buttons</string>
     <string name="swap_hw_buttons_summary">Swap the order of recents and back buttons</string>
 
+    <!-- Button brightness -->
+    <string name="btn_title">Buttons</string>
+    <string name="btn_led_title">Led brightness</string>
+    <string name="btn_led_summary">Adjust the led brightness of buttons</string>
+
     <!-- usb fastcharge -->
     <string name="usb_fastcharge_title">USB Fastcharge</string>
     <string name="fastcharge_title">Enable USB Fastcharge</string>
