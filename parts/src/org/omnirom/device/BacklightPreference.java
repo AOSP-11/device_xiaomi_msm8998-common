@@ -86,20 +86,24 @@ public final class BacklightPreference extends Preference implements
         mValueText.setText(Integer.toString(Math.round(progress/ PROGRESS_OFFSET)) + "%");
     }
 
-    private static void setValue(int newValue) {
+    private static void setValue(int newValue, Context context) {
 	String newStrVal = newValue + "";
         FileUtils.writeValue(FILE_LED_LEFT, newStrVal);
         FileUtils.writeValue(FILE_LED_RIGHT, newStrVal);
+
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
+        editor.putInt(DeviceSettings.KEY_BTN_BRIGHTNESS, newValue);
+        editor.apply();
     }
 
     public static void restore(Context context) {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
         int storedValue = pref.getInt(DeviceSettings.KEY_BTN_BRIGHTNESS, BACKLIGHT_MAX_BRIGHTNESS);
-        setValue(storedValue);
+        setValue(storedValue, context);
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
-        setValue(progress);
+        setValue(progress, getContext());
 	updateProgress(progress);
     }
 
