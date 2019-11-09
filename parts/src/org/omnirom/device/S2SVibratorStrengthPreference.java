@@ -18,22 +18,16 @@
 
 package org.omnirom.device;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.ContentObserver;
-import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.AttributeSet;
+import android.widget.SeekBar;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceViewHolder;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.SeekBar;
 
-import org.omnirom.device.R;
 import org.omnirom.device.utils.FileUtils;
 
 public class S2SVibratorStrengthPreference extends Preference implements

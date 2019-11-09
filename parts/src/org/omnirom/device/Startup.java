@@ -22,11 +22,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.provider.Settings;
-import androidx.preference.PreferenceManager;
-import android.text.TextUtils;
 
-import org.omnirom.device.R;
+import androidx.preference.PreferenceManager;
+
 import org.omnirom.device.utils.FileUtils;
 
 public class Startup extends BroadcastReceiver {

@@ -18,22 +18,19 @@
 
 package org.omnirom.device;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
-import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.SwitchPreference;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 
-import org.omnirom.device.R;
 import org.omnirom.device.utils.FileUtils;
 import org.omnirom.device.utils.SeekBarPreference;
 

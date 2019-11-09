@@ -21,20 +21,16 @@ package org.omnirom.device.utils;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.preference.Preference;
-import android.text.InputFilter;
 import android.text.InputType;
 import android.util.AttributeSet;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-
-import android.os.Handler;
-import android.os.Message;
 
 import org.omnirom.device.R;
 import org.omnirom.device.UtilsKCAL;

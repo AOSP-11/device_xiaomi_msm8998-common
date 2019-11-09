@@ -20,20 +20,15 @@ package org.omnirom.device;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
-import android.os.Bundle;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceManager;
-import androidx.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
-import android.view.View;
-
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import org.omnirom.device.utils.FileUtils;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceManager;
+import androidx.preference.PreferenceViewHolder;
 
-import org.omnirom.device.R;
+import org.omnirom.device.utils.FileUtils;
 
 /**
  * Backlight Preference used to adjust led brightness of buttons.
