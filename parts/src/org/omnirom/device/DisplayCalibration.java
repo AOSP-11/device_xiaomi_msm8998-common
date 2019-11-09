@@ -21,20 +21,17 @@ package org.omnirom.device;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
-import android.preference.SwitchPreference;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.ImageView;
+
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceManager;
+import androidx.preference.SwitchPreference;
 
 import org.omnirom.device.utils.FileUtils;
 import org.omnirom.device.utils.SeekBarPreference;
 
-public class DisplayCalibration extends PreferenceActivity implements
+public final class DisplayCalibration extends PreferenceFragment implements
         OnPreferenceChangeListener {
 
     public static final String KEY_KCAL_ENABLED = "kcal_enabled";
@@ -65,43 +62,36 @@ public class DisplayCalibration extends PreferenceActivity implements
     private static final String COLOR_FILE_ENABLE = "/sys/devices/platform/kcal_ctrl.0/kcal_enable";
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        setContentView(R.layout.display_cal);
-
-        ImageView imageView = (ImageView) findViewById(R.id.calibration_pic);
-        imageView.setImageResource(R.drawable.reference_map);
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         addPreferencesFromResource(R.xml.display_calibration);
 
-        mKcalEnabled = (SwitchPreference) findPreference(KEY_KCAL_ENABLED);
+        mKcalEnabled = findPreference(KEY_KCAL_ENABLED);
         mKcalEnabled.setChecked(mPrefs.getBoolean(DisplayCalibration.KEY_KCAL_ENABLED, false));
         mKcalEnabled.setOnPreferenceChangeListener(this);
 
-        mKcalRed = (SeekBarPreference) findPreference(KEY_KCAL_RED);
-        mKcalRed.setInitValue(mPrefs.getInt(KEY_KCAL_RED, mKcalRed.def));
+        mKcalRed = findPreference(KEY_KCAL_RED);
+        mKcalRed.setValue(mPrefs.getInt(KEY_KCAL_RED, mKcalRed.def));
         mKcalRed.setOnPreferenceChangeListener(this);
 
-        mKcalGreen = (SeekBarPreference) findPreference(KEY_KCAL_GREEN);
+        mKcalGreen = findPreference(KEY_KCAL_GREEN);
         mKcalGreen.setInitValue(mPrefs.getInt(KEY_KCAL_GREEN, mKcalGreen.def));
         mKcalGreen.setOnPreferenceChangeListener(this);
 
-        mKcalBlue = (SeekBarPreference) findPreference(KEY_KCAL_BLUE);
+        mKcalBlue =  findPreference(KEY_KCAL_BLUE);
         mKcalBlue.setInitValue(mPrefs.getInt(KEY_KCAL_BLUE, mKcalBlue.def));
         mKcalBlue.setOnPreferenceChangeListener(this);
 
-        mKcalSaturation = (SeekBarPreference) findPreference(KEY_KCAL_SATURATION);
+        mKcalSaturation =  findPreference(KEY_KCAL_SATURATION);
         mKcalSaturation.setInitValue(mPrefs.getInt(KEY_KCAL_SATURATION, mKcalSaturation.def));
         mKcalSaturation.setOnPreferenceChangeListener(this);
 
-        mKcalContrast = (SeekBarPreference) findPreference(KEY_KCAL_CONTRAST);
+        mKcalContrast =  findPreference(KEY_KCAL_CONTRAST);
         mKcalContrast.setInitValue(mPrefs.getInt(KEY_KCAL_CONTRAST, mKcalContrast.def));
         mKcalContrast.setOnPreferenceChangeListener(this);
 
-        mKcalColorTemp = (SeekBarPreference) findPreference(KEY_KCAL_COLOR_TEMP);
+        mKcalColorTemp = findPreference(KEY_KCAL_COLOR_TEMP);
         mKcalColorTemp.setInitValue(mPrefs.getInt(KEY_KCAL_COLOR_TEMP, mKcalColorTemp.def));
         mKcalColorTemp.setOnPreferenceChangeListener(this);
 
@@ -115,7 +105,7 @@ public class DisplayCalibration extends PreferenceActivity implements
         return FileUtils.isFileWritable(file);
     }
 
-    public static void restore(Context context) {
+    static void restore(Context context) {
        boolean storeEnabled = PreferenceManager
                 .getDefaultSharedPreferences(context).getBoolean(DisplayCalibration.KEY_KCAL_ENABLED, false);
        if (storeEnabled) {
@@ -139,29 +129,7 @@ public class DisplayCalibration extends PreferenceActivity implements
        }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.kcal_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-            case R.id.menu_reset:
-                reset();
-                return true;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void reset() {
+    void reset() {
         int red = mKcalRed.reset();
         int green = mKcalGreen.reset();
         int blue = mKcalBlue.reset();
