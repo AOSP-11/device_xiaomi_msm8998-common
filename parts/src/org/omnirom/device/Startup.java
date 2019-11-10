@@ -31,7 +31,6 @@ public class Startup extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         S2SVibratorStrengthPreference.restore(context);
         String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.S2S_KEY, "0");
         FileUtils.writeValue(DeviceSettings.FILE_S2S_TYPE, storedValue);
