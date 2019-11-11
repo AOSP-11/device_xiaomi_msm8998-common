@@ -70,6 +70,7 @@ public final class DisplayCalibration extends PreferenceFragment implements
         mKcalEnabled = findPreference(KEY_KCAL_ENABLED);
         mKcalEnabled.setChecked(mPrefs.getBoolean(DisplayCalibration.KEY_KCAL_ENABLED, false));
         mKcalEnabled.setOnPreferenceChangeListener(this);
+        mKcalEnabled.setIconSpaceReserved(false);
 
         mKcalRed = findPreference(KEY_KCAL_RED);
         mKcalRed.setValue(mPrefs.getInt(KEY_KCAL_RED, mKcalRed.def));
