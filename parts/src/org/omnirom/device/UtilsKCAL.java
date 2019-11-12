@@ -16,20 +16,7 @@
 
 package org.omnirom.device;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningServiceInfo;
-import android.content.Context;
-import android.content.Intent;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import android.content.SharedPreferences;
-import android.os.UserHandle;
-import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.util.Log;
-import java.lang.Math;
 
 public final class UtilsKCAL {
 
