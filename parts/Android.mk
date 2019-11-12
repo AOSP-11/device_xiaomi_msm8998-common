@@ -5,7 +5,11 @@ include $(CLEAR_VARS)
 LOCAL_MODULE_TAGS := optional
 LOCAL_STATIC_ANDROID_LIBRARIES := \
     androidx.core_core \
+    androidx.appcompat_appcompat \
     androidx.preference_preference
+
+LOCAL_STATIC_JAVA_LIBRARIES := \
+    androidx.annotation_annotation
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 LOCAL_PACKAGE_NAME := XiaomiParts

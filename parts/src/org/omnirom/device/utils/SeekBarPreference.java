@@ -20,30 +20,28 @@ package org.omnirom.device.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.preference.Preference;
-import android.text.InputFilter;
 import android.text.InputType;
 import android.util.AttributeSet;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-import android.os.Handler;
-import android.os.Message;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceViewHolder;
 
 import org.omnirom.device.R;
 import org.omnirom.device.UtilsKCAL;
 
 public class SeekBarPreference extends Preference {
 
-    public int minimum = 1;
-    public int maximum = 256;
-    public int def = 256;
+    public int minimum  = 1;
+    public int maximum  = 256;
+    public int def      = 256;
     public int interval = 1;
 
     final int UPDATE = 0;
@@ -69,8 +67,8 @@ public class SeekBarPreference extends Preference {
     }
 
     private void bind(final View layout) {
-        final EditText monitorBox = (EditText) layout.findViewById(R.id.monitor_box);
-        final SeekBar bar = (SeekBar) layout.findViewById(R.id.seek_bar);
+        final EditText monitorBox = layout.findViewById(R.id.monitor_box);
+        final SeekBar bar = layout.findViewById(R.id.seek_bar);
 
         monitorBox.setInputType(InputType.TYPE_CLASS_NUMBER);
 
@@ -93,7 +91,7 @@ public class SeekBarPreference extends Preference {
                     v.clearFocus();
                     InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                    currentValue = (int) UtilsKCAL.clamp(Integer.parseInt(v.getText().toString()),minimum,maximum);
+                    currentValue = (int) UtilsKCAL.clamp(Integer.parseInt(v.getText().toString()), minimum, maximum);
                     monitorBox.setText(String.valueOf(currentValue));
                     bar.setProgress(currentValue - minimum, true);
                     changer.onPreferenceChange(SeekBarPreference.this, Integer.toString(currentValue));
@@ -124,9 +122,9 @@ public class SeekBarPreference extends Preference {
     }
 
     @Override
-    protected void onBindView(View view) {
-        super.onBindView(view);
-        bind(view);
+    public void onBindViewHolder(PreferenceViewHolder holder) {
+        super.onBindViewHolder(holder);
+        bind(holder.itemView);
     }
 
     public void setInitValue(int progress) {
