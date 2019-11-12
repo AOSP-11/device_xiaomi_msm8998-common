@@ -43,8 +43,8 @@ public final class BacklightPreference extends Preference implements SeekBar.OnS
     private static final int BACKLIGHT_MAX_BRIGHTNESS = 255;
     private static final float PROGRESS_OFFSET = BACKLIGHT_MAX_BRIGHTNESS / 100f;
 
-    private static final String FILE_LED_LEFT = "/sys/class/leds/button-backlight/brightness";
-    private static final String FILE_LED_RIGHT = "/sys/class/leds/button-backlight1/brightness";
+    private static final String FILE_LED_LEFT = "/sys/class/leds/button-backlight/max_brightness";
+    private static final String FILE_LED_RIGHT = "/sys/class/leds/button-backlight1/max_brightness";
 
     private TextView mValueText;
 
