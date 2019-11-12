@@ -1,1 +1,2 @@
 allow platform_app radio_data_file:dir create_dir_perms;
+allow platform_app system_app_data_file:dir create_dir_perms;
