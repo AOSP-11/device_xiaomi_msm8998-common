@@ -218,11 +218,8 @@ PRODUCT_PACKAGES += \
 
 # IMS
 PRODUCT_PACKAGES += \
-    ims_ext_common.xml \
-    ims-ext-common_system
-
-PRODUCT_BOOT_JARS += \
-    ims-ext-common_system
+    ims-ext-common \
+    ims_ext_common.xml
 
 # IRQ
 PRODUCT_COPY_FILES += \
