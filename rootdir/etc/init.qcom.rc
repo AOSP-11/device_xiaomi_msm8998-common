@@ -314,12 +314,6 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqb
     user root
     group root
 
-service vendor.time_daemon /vendor/bin/time_daemon
-    class main
-    user root
-    group root
-    writepid /dev/cpuset/system-background/tasks
-
 service vendor.power_off_alarm /vendor/bin/power_off_alarm
     class core
     group system
