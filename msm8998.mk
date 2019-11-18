@@ -162,11 +162,6 @@ PRODUCT_PACKAGES += \
     XiaomiDoze \
     XiaomiParts
 
-# Device mapper verity
-PRODUCT_SYSTEM_VERITY_PARTITION=/dev/block/bootdevice/by-name/system
-PRODUCT_VENDOR_VERITY_PARTITION=/dev/block/bootdevice/by-name/cust
-$(call inherit-product, build/target/product/verity.mk)
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
