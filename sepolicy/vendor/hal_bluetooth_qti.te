@@ -1,0 +1,1 @@
+allow hal_bluetooth_qti bluetooth_data_file:dir create_dir_perms;

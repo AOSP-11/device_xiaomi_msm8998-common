@@ -5,13 +5,14 @@ allow init bt_firmware_file:filesystem getattr;
 
 allow init sysfs_dm:file { write setattr };
 
-# 修复错误:SELinux : avc:  denied  { add } for interface=android.hidl.base::IBase sid=u:r:init:s0 pid=5626 scontext=u:r:init:s0 tcontext=u:object_r:hidl_base_hwservice:s0 tclass=hwservice_manager permissive=0
 allow init hidl_base_hwservice:hwservice_manager add;
 
 allow init hal_graphics_composer_default:binder call;
 allow init hwservicemanager:binder transfer;
 
-# SELinux : avc:  denied  { add } for interface=android.hardware.drm::IDrmFactory sid=u:r:init:s0 pid=5031 scontext=u:r:init:s0 tcontext=u:object_r:hal_drm_hwservice:s0 tclass=hwservice_manager permissive=0
 allow init hal_drm_hwservice:hwservice_manager add;
 
 allow init vendor_file:file rwx_file_perms;
+allow init sysfs_kgsl:lnk_file read;
+allow init sysfs:file write;
+allow init sysfs_devices_system_cpu:file rwx_file_perms;

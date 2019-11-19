@@ -1,0 +1,1 @@
+allow dpmd vendor_file:file rwx_file_perms;

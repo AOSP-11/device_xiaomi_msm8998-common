@@ -11,3 +11,5 @@ get_prop(system_app, spectrum_prop);
 
 # Parts-Backlight
 allow system_app sysfs_leds:dir create_dir_perms;
+
+allow system_app sysfs_zram:file rwx_file_perms;
