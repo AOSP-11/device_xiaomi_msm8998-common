@@ -1,1 +1,1 @@
-allow dpmd vendor_file:file rwx_file_perms;
+vndbinder_use(hal_drm_default)
