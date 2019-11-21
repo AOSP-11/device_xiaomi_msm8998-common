@@ -43,9 +43,7 @@ public final class S2SVibratorStrengthPreference extends Preference implements
     private SeekBar mSeekBar;
     private Vibrator mVibrator;
 
-    public static final class KernelFeatureImp implements KernelFeature<Integer> {
-
-        private KernelFeatureImp(){}
+    public static final KernelFeature<Integer> FEATURE = new KernelFeature<Integer>() {
 
         @Override
         public boolean isSupported() {
@@ -75,9 +73,7 @@ public final class S2SVibratorStrengthPreference extends Preference implements
             int storedValue = sp.getInt(KEY_S2S_VIBSTRENGTH, VIB_STRENGTH_DEFAULT);
             return applyValue(storedValue);
         }
-    }
-
-    public static KernelFeatureImp FEATURE = new KernelFeatureImp();
+    };
 
     public S2SVibratorStrengthPreference(Context context, AttributeSet attrs) {
         super(context, attrs);

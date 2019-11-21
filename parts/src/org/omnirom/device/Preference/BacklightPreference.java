@@ -48,9 +48,7 @@ public final class BacklightPreference extends Preference implements SeekBar.OnS
 
     private TextView mValueText;
 
-    public static final class KernelFeatureImp implements KernelFeature<Integer> {
-
-        private KernelFeatureImp(){}
+    public static KernelFeature<Integer> FEATURE = new KernelFeature<Integer>() {
 
         @Override
         public boolean isSupported() {
@@ -82,14 +80,12 @@ public final class BacklightPreference extends Preference implements SeekBar.OnS
 
         @Override
         public boolean restore(SharedPreferences sp) {
-            if(!isSupported()) return false;
+            if (!isSupported()) return false;
 
             int storedValue = sp.getInt(KEY_BTN_BRIGHTNESS, BACKLIGHT_MAX_BRIGHTNESS);
             return applyValue(storedValue);
         }
-    }
-
-    public static KernelFeatureImp FEATURE = new KernelFeatureImp();
+    };
 
     public BacklightPreference(Context context, AttributeSet attrs) {
         super(context, attrs);

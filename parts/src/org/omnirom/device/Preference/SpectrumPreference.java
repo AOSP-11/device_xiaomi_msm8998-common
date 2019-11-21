@@ -34,8 +34,7 @@ public final class SpectrumPreference extends ListPreference implements
     private static final String SPECTRUM_DEFAULT_PROFILE = "0";
     private static final String SPECTRUM_SYSTEM_PROPERTY = "persist.spectrum.profile";
 
-    public static final class KernelFeatureImp implements KernelFeature<String> {
-        private KernelFeatureImp(){}
+    public static final KernelFeature<String> FEATURE = new KernelFeature<String>() {
 
         @Override
         public boolean isSupported() {
@@ -65,9 +64,7 @@ public final class SpectrumPreference extends ListPreference implements
             String value = sp.getString(SPECTRUM_KEY, SPECTRUM_DEFAULT_PROFILE);
             return applyValue(value);
         }
-    }
-
-    public static KernelFeatureImp FEATURE = new KernelFeatureImp();
+    };
 
     public SpectrumPreference(Context context, AttributeSet attrs) {
         super(context, attrs);

@@ -34,8 +34,7 @@ public final class SweepToSleepPreference extends ListPreference implements
     public static final String S2S_DEFAULT = "0";
     private static final String FILE_S2S_TYPE = "/sys/sweep2sleep/sweep2sleep";
 
-    public static final class KernelFeatureImp implements KernelFeature<String> {
-        private KernelFeatureImp() { }
+    public static final KernelFeature<String> FEATURE = new KernelFeature<String>() {
 
         @Override
         public boolean isSupported() {
@@ -64,9 +63,7 @@ public final class SweepToSleepPreference extends ListPreference implements
             String value = sp.getString(S2S_KEY, S2S_DEFAULT);
             return applyValue(value);
         }
-    }
-
-    public static KernelFeatureImp FEATURE = new KernelFeatureImp();
+    };
 
     public SweepToSleepPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
