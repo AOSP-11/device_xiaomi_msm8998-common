@@ -1,0 +1,1 @@
+allow tee tmpfs:dir create_file_perms;
