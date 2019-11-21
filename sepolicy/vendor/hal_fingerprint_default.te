@@ -23,3 +23,6 @@ dontaudit hal_fingerprint_default sysfs_graphics:dir search;
 dontaudit hal_fingerprint_default sysfs_leds:dir search;
 
 set_prop(hal_fingerprint_default, vendor_fp_prop);
+
+dontaudit hal_fingerprint_default { storage_file mnt_user_file sdcardfs media_rw_data_file }:dir { search read open };
+dontaudit hal_fingerprint_default { storage_file mnt_user_file }:lnk_file read;
