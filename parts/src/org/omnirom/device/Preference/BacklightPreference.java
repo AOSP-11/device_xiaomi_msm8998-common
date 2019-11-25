@@ -52,7 +52,7 @@ public final class BacklightPreference extends Preference implements SeekBar.OnS
 
         @Override
         public boolean isSupported() {
-            return FileUtils.isFileExists(FILE_LED_LEFT) && FileUtils.isFileExists(FILE_LED_RIGHT);
+            return FileUtils.isFileWritable(FILE_LED_LEFT) && FileUtils.isFileWritable(FILE_LED_RIGHT);
         }
 
         /**
