@@ -122,8 +122,7 @@ public final class DisplayCalibration extends PreferenceFragment implements
                    .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_SATURATION, 255);
            int storedContrast = PreferenceManager
                    .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_CONTRAST, 255);
-           String storedValue = ((String) String.valueOf(storedRed)
-                   + " " + String.valueOf(storedGreen) + " " +  String.valueOf(storedBlue));
+           String storedValue = (storedRed + " " + storedGreen + " " + storedBlue);
            FileUtils.writeValue(COLOR_FILE, storedValue);
            FileUtils.writeValue(COLOR_FILE_CONTRAST, String.valueOf(storedContrast));
            FileUtils.writeValue(COLOR_FILE_SATURATION, String.valueOf(storedSaturation));
@@ -137,13 +136,14 @@ public final class DisplayCalibration extends PreferenceFragment implements
         int saturation = mKcalSaturation.reset();
         int contrast = mKcalContrast.reset();
 
-        mPrefs.edit().putInt(KEY_KCAL_RED, red).commit();
-        mPrefs.edit().putInt(KEY_KCAL_GREEN, green).commit();
-        mPrefs.edit().putInt(KEY_KCAL_BLUE, blue).commit();
-        mPrefs.edit().putInt(KEY_KCAL_SATURATION, saturation).commit();
-        mPrefs.edit().putInt(KEY_KCAL_CONTRAST, contrast).commit();
+        mPrefs.edit().putInt(KEY_KCAL_RED, red)
+                .putInt(KEY_KCAL_GREEN, green)
+                .putInt(KEY_KCAL_BLUE, blue)
+                .putInt(KEY_KCAL_SATURATION, saturation)
+                .putInt(KEY_KCAL_CONTRAST, contrast)
+                .apply();
 
-        String storedValue = Integer.toString(red) + " " + Integer.toString(green) + " " +  Integer.toString(blue);
+        String storedValue = red + " " + green + " " + blue;
 
         FileUtils.writeValue(COLOR_FILE, storedValue);
         FileUtils.writeValue(COLOR_FILE_SATURATION, Integer.toString(saturation));
@@ -161,8 +161,7 @@ public final class DisplayCalibration extends PreferenceFragment implements
             mRed = String.valueOf(mPrefs.getInt(KEY_KCAL_RED, 256));
             mBlue = String.valueOf(mPrefs.getInt(KEY_KCAL_BLUE, 256));
             mGreen = String.valueOf(mPrefs.getInt(KEY_KCAL_GREEN, 256));
-            String storedValue = ((String) String.valueOf(mRed)
-                   + " " + String.valueOf(mGreen) + " " +  String.valueOf(mBlue));
+            String storedValue = (mRed + " " + mGreen + " " + mBlue);
             String mSaturation = String.valueOf(mPrefs.getInt(KEY_KCAL_SATURATION, 256));
             String mContrast = String.valueOf(mPrefs.getInt(KEY_KCAL_CONTRAST, 256));
             FileUtils.writeValue(COLOR_FILE_ENABLE, enabled ? "1" : "0");
@@ -178,7 +177,7 @@ public final class DisplayCalibration extends PreferenceFragment implements
             mPrefs.edit().putInt(KEY_KCAL_RED, (int) val).commit();
             mGreen = String.valueOf(mPrefs.getInt(KEY_KCAL_GREEN, 256));
             mBlue = String.valueOf(mPrefs.getInt(KEY_KCAL_BLUE, 256));
-            String strVal = ((String) newValue + " " + mGreen + " " +mBlue);
+            String strVal = (newValue + " " + mGreen + " " +mBlue);
             FileUtils.writeValue(COLOR_FILE, strVal);
 
             int cct = UtilsKCAL.KfromRGB(val, mPrefs.getInt(KEY_KCAL_GREEN, 256), mPrefs.getInt(KEY_KCAL_BLUE, 256));
@@ -189,7 +188,7 @@ public final class DisplayCalibration extends PreferenceFragment implements
             mPrefs.edit().putInt(KEY_KCAL_GREEN, (int) val).commit();
             mRed = String.valueOf(mPrefs.getInt(KEY_KCAL_RED, 256));
             mBlue = String.valueOf(mPrefs.getInt(KEY_KCAL_BLUE, 256));
-            String strVal = ((String) mRed + " " + newValue + " " +mBlue);
+            String strVal = (mRed + " " + newValue + " " +mBlue);
             FileUtils.writeValue(COLOR_FILE, strVal);
 
             int cct = UtilsKCAL.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256), val, mPrefs.getInt(KEY_KCAL_BLUE, 256));
@@ -200,7 +199,7 @@ public final class DisplayCalibration extends PreferenceFragment implements
             mPrefs.edit().putInt(KEY_KCAL_BLUE, (int) val).commit();
             mRed = String.valueOf(mPrefs.getInt(KEY_KCAL_RED, 256));
             mGreen = String.valueOf(mPrefs.getInt(KEY_KCAL_GREEN, 256));
-            String strVal = ((String) mRed + " " + mGreen + " " +newValue);
+            String strVal = (mRed + " " + mGreen + " " +newValue);
             FileUtils.writeValue(COLOR_FILE, strVal);
 
             int cct = UtilsKCAL.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256), mPrefs.getInt(KEY_KCAL_GREEN, 256), val);
@@ -229,11 +228,12 @@ public final class DisplayCalibration extends PreferenceFragment implements
             mKcalGreen.setValue(green);
             mKcalBlue.setValue(blue);
 
-            mPrefs.edit().putInt(KEY_KCAL_RED, red).commit();
-            mPrefs.edit().putInt(KEY_KCAL_GREEN, green).commit();
-            mPrefs.edit().putInt(KEY_KCAL_BLUE, blue).commit();
+            mPrefs.edit().putInt(KEY_KCAL_RED, red)
+                    .putInt(KEY_KCAL_GREEN, green)
+                    .putInt(KEY_KCAL_BLUE, blue)
+                    .apply();
 
-            String storedValue = Integer.toString(red) + " " + Integer.toString(green) + " " +  Integer.toString(blue);
+            String storedValue = red + " " + green + " " + blue;
             FileUtils.writeValue(COLOR_FILE, storedValue);
         }
         return false;
