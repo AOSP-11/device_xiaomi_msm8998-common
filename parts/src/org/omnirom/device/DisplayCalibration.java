@@ -234,6 +234,7 @@ public final class DisplayCalibration extends PreferenceFragment implements
 
             String storedValue = red + " " + green + " " + blue;
             FileUtils.writeValue(COLOR_FILE, storedValue);
+            return true;
         }
         return false;
     }
