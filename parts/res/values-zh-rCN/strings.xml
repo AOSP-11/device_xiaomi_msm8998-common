@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">其他设置</string>
     <string name="advanced_settings">其他设置</string>
     <string name="advanced_settings_summary">色彩校准、CPU 运行模式、滑动休眠</string>
@@ -61,4 +61,9 @@
     <string name="usb_fastcharge_title">USB 快速充电</string>
     <string name="fastcharge_title">开启 USB 快速充电</string>
     <string name="fastcharge_summary">连接到计算机 USB 3.X 接口时，可以使用快速充电</string>
+
+    <string name="seekbar_no_default_value">未设置任何默认选项</string>
+    <string name="seekbar_default_value_set">设定预设值为<xliff:g id="number">%d</xliff:g></string>
+    <string name="seekbar_default_value_already_set">已设置默认值</string>
+    <string name="seekbar_default_string">默认</string>
 </resources>
