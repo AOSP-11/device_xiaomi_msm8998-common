@@ -19,7 +19,6 @@ package org.omnirom.device.Preference;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.PixelFormat;
-import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -62,7 +61,6 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
     private ImageView mImagePlus;
     private ImageView mImageMinus;
     private Drawable mProgressThumb;
-    private int mThumbDefaultValueColor;
 
     protected TextView mStatusText;
     private TextView mPopupValue;
@@ -124,7 +122,6 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
 
         TypedValue typedValue = new TypedValue();
         context.getTheme().resolveAttribute(android.R.attr.colorForeground, typedValue, true);
-        mThumbDefaultValueColor = typedValue.data;
         a.recycle();
 
         mOffsetX = (int) context.getResources().getDimension(R.dimen.seek_bar_preference_cham_value_x_offset);
@@ -304,17 +301,7 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
     }
 
     private void updateCurrentValueText() {
-        if (mCurrentValue == mDefaultValue && mDefaultValue != -1) {
-            mStatusText.setText(R.string.seekbar_default_string);
-            mProgressThumb.setColorFilter(mThumbDefaultValueColor, PorterDuff.Mode.SRC_IN);
-            mUnitsLeftText.setVisibility(View.GONE);
-            mUnitsRightText.setVisibility(View.GONE);
-        } else {
-            mStatusText.setText(String.valueOf(mCurrentValue));
-            mProgressThumb.clearColorFilter();
-            mUnitsLeftText.setVisibility(View.VISIBLE);
-            mUnitsRightText.setVisibility(View.VISIBLE);
-        }
+        mStatusText.setText(String.valueOf(mCurrentValue));
     }
 
     @Override
