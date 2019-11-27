@@ -21,6 +21,7 @@ package org.omnirom.device;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
@@ -104,6 +105,13 @@ public final class DisplayCalibration extends PreferenceFragment implements
         mGreen = String.valueOf(mPrefs.getInt(KEY_KCAL_GREEN, mKcalGreen.getDefault()));
         mBlue = String.valueOf(mPrefs.getInt(KEY_KCAL_BLUE, mKcalBlue.getDefault()));
 
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        // override popup view for kcal temperature
+        mKcalColorTemp.setPopupWidth(R.dimen.seek_bar_popup_text_medium);
     }
 
     static boolean isSupported() {

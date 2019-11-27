@@ -103,7 +103,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_toStartOf="@id/seekBarPrefUnitsRight"
-                android:gravity="end"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceListItemSecondary"
                 android:textColor="?android:attr/textColorSecondary" />
 

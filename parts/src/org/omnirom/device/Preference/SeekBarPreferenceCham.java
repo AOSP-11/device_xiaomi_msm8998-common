@@ -28,13 +28,13 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.DimenRes;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
@@ -70,6 +70,11 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
     private boolean mPopupAdded = false;
     private int mPopupWidth = 0;
     private boolean initialised = false;
+
+    private int mOffsetX;
+    private int mOffsetY;
+
+    private WindowManager.LayoutParams mPopupLayoutParams;
 
     public SeekBarPreferenceCham(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -121,6 +126,9 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         context.getTheme().resolveAttribute(android.R.attr.colorForeground, typedValue, true);
         mThumbDefaultValueColor = typedValue.data;
         a.recycle();
+
+        mOffsetX = (int) context.getResources().getDimension(R.dimen.seek_bar_preference_cham_value_x_offset);
+        mOffsetY = (int) context.getResources().getDimension(R.dimen.seek_bar_preference_cham_value_y_offset);
     }
 
     private String getAttributeStringValue(AttributeSet attrs, String namespace, String name, String defaultValue) {
@@ -190,42 +198,49 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         mStatusText.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                final String defaultValue = getContext().getString(R.string.seekbar_default_value_set,
-                        mDefaultValue);
+                int hint = R.string.seekbar_default_value_set;
+
                 if (mDefaultValue != -1) {
                     if (mDefaultValue != mCurrentValue) {
                         mCurrentValue = mDefaultValue;
                         updateView();
-                        Toast.makeText(getContext(), defaultValue, Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getContext(), R.string.seekbar_default_value_already_set,
-                                Toast.LENGTH_LONG).show();
+                        hint = R.string.seekbar_default_value_already_set;
                     }
                 } else {
-                    Toast.makeText(getContext(), R.string.seekbar_no_default_value,
-                            Toast.LENGTH_LONG).show();
+                    hint = R.string.seekbar_no_default_value;
                 }
+                Toast.makeText(getContext(), hint, Toast.LENGTH_LONG).show();
                 return true;
             }
         });
 
-        LayoutInflater mInflater = (LayoutInflater) getContext()
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mPopupValue = (TextView) mInflater.inflate(R.layout.seek_bar_value_popup, null, false);
-        mPopupValue.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                int width = mPopupValue.getWidth();
-                if (width != mPopupWidth) {
-                    mPopupWidth = mPopupValue.getWidth();
-                    startUpdateViewValue();
-                }
-            }
-        });
+        if (mPopupWidth == 0) {
+            mPopupWidth = (int) getContext().getResources().getDimension(R.dimen.seek_bar_popup_text_width);
+        }
+
+        mPopupValue = onInflatePopupLayout(getContext(), LayoutInflater.from(getContext()));
+        mPopupLayoutParams = getPopupLayoutParams(getContext());
+        mPopupValue.setLayoutParams(mPopupLayoutParams);
 
         initialised = true;
         updateView();
         mSeekBar.setOnSeekBarChangeListener(this);
+    }
+
+    protected WindowManager.LayoutParams getPopupLayoutParams(Context context) {
+        WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+                mPopupWidth,
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.TYPE_APPLICATION,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                PixelFormat.TRANSLUCENT);
+        params.gravity = Gravity.START | Gravity.TOP;
+        return params;
+    }
+
+    protected TextView onInflatePopupLayout(Context context, LayoutInflater inflater) {
+       return (TextView) inflater.inflate(R.layout.seek_bar_value_popup, null, false);
     }
 
     /**
@@ -258,7 +273,7 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
 
         // change rejected, revert to the previous value
         if (!callChangeListener(newValue)) {
-            Log.i(TAG, "onProgressChanged: new value rejected" );
+            Log.i(TAG, "onProgressChanged: new value rejected");
             seekBar.setProgress(mCurrentValue - mMinValue);
             return;
         }
@@ -317,8 +332,7 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
 
     @Override
     protected Object onGetDefaultValue(TypedArray ta, int index) {
-        int defaultValue = ta.getInt(index, DEFAULT_VALUE);
-        return defaultValue;
+        return ta.getInt(index, DEFAULT_VALUE);
     }
 
     @Override
@@ -354,27 +368,16 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
             mainContentView.getLocationInWindow(offsetPos);
         }
         mPopupValue.setText(mUnitsLeft + mCurrentValue + mUnitsRight);
-        WindowManager.LayoutParams wp = new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_APPLICATION,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-                PixelFormat.TRANSLUCENT);
-        wp.gravity = Gravity.LEFT | Gravity.TOP;
-        wp.x = thumbRect.centerX() + seekBarPos[0] - offsetPos[0] - (mPopupWidth - thumbRect.width()) / 2 +
-                (int) getContext().getResources()
-                        .getDimension(R.dimen.seek_bar_preference_cham_value_x_offset);
-        wp.y = seekBarPos[1] - offsetPos[1] +
-                (int) getContext().getResources()
-                        .getDimension(R.dimen.seek_bar_preference_cham_value_y_offset);
-        mPopupValue.setLayoutParams(wp);
+        mPopupLayoutParams = (WindowManager.LayoutParams) mPopupValue.getLayoutParams();
+        mPopupLayoutParams.x = thumbRect.centerX() + seekBarPos[0] - offsetPos[0] - (mPopupWidth - thumbRect.width()) / 2 + mOffsetX;
+        mPopupLayoutParams.y = seekBarPos[1] - offsetPos[1] + mOffsetY;
+        mPopupValue.setLayoutParams(mPopupLayoutParams);
         if (mPopupAdded) {
-            wp = (WindowManager.LayoutParams) mPopupValue.getLayoutParams();
             ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
-                    .updateViewLayout(mPopupValue, wp);
+                    .updateViewLayout(mPopupValue, mPopupLayoutParams);
         } else {
             ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
-                    .addView(mPopupValue, wp);
+                    .addView(mPopupValue, mPopupLayoutParams);
             mPopupAdded = true;
         }
         mPopupValue.setVisibility(View.VISIBLE);
@@ -384,6 +387,10 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         if (!mPopupAdded) return;
         ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).removeView(mPopupValue);
         mPopupAdded = false;
+    }
+
+    public void setPopupWidth(@DimenRes int width) {
+        mPopupWidth = (int) getContext().getResources().getDimension(width);
     }
 
     public void setMax(int max) {
