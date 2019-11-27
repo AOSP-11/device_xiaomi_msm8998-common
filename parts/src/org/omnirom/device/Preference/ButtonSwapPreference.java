@@ -34,8 +34,7 @@ public final class ButtonSwapPreference extends SwitchPreference implements
     private static final String BUTTONS_SWAP_PATH = "/proc/touchpanel/reversed_keys_enable";
     private static final boolean BUTTONS_SWAP_DEFAULT_VALUE = false;
 
-    public static final class KernelFeatureImp implements KernelFeature<Boolean> {
-        private KernelFeatureImp(){}
+    public static final KernelFeature<Boolean> FEATURE = new KernelFeature<Boolean>() {
 
         @Override
         public boolean isSupported() {
@@ -64,9 +63,7 @@ public final class ButtonSwapPreference extends SwitchPreference implements
             boolean value = sp.getBoolean(BUTTONS_SWAP_KEY, BUTTONS_SWAP_DEFAULT_VALUE);
             return applyValue(value);
         }
-    }
-
-    public static KernelFeatureImp FEATURE = new KernelFeatureImp();
+    };
 
     public ButtonSwapPreference(Context context, AttributeSet attrs) {
         super(context, attrs);

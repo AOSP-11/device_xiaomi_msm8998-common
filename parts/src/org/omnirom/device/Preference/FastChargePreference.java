@@ -35,8 +35,7 @@ public final class FastChargePreference extends SwitchPreference
     public static final String USB_FAST_CHARGE_PATH = "/sys/kernel/fast_charge/force_fast_charge";
     public static final boolean USB_FAST_CHARGE_DEFAULT = false;
 
-    public static final class KernelFeatureImp implements KernelFeature<Boolean> {
-        private KernelFeatureImp() { }
+    public static final KernelFeature<Boolean> FEATURE = new KernelFeature<Boolean>() {
 
         @Override
         public boolean isSupported() {
@@ -65,9 +64,7 @@ public final class FastChargePreference extends SwitchPreference
             boolean value = sp.getBoolean(USB_FAST_CHARGE_KEY, USB_FAST_CHARGE_DEFAULT);
             return applyValue(value);
         }
-    }
-
-    public static KernelFeatureImp FEATURE = new KernelFeatureImp();
+    };
 
     public FastChargePreference(Context context, AttributeSet attrs) {
         super(context, attrs);

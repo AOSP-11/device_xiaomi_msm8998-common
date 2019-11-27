@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 
-<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
     <androidx.preference.PreferenceCategory
         android:key="display"
         android:title="@string/display_title">
@@ -67,7 +67,10 @@
         <org.omnirom.device.Preference.S2SVibratorStrengthPreference
             android:icon="@drawable/ic_vibrate"
             android:key="s2s_vib_strength"
-            android:title="@string/s2s_vib_strength_title_head" />
+            android:title="@string/s2s_vib_strength_title_head"
+            android:max="90"
+            android:min="0"
+            android:defaultValue="20"/>
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
@@ -86,7 +89,10 @@
             android:iconSpaceReserved="true"
             android:key="btn_brightness"
             android:summary="@string/btn_led_summary"
-            android:title="@string/btn_led_title" />
+            android:title="@string/btn_led_title"
+            android:max="255"
+            android:min="0"
+            android:defaultValue="255"/>
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory

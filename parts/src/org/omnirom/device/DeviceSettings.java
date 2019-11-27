@@ -66,6 +66,8 @@ public final class DeviceSettings extends PreferenceFragment {
         mSweep.setEnabled(SweepToSleepPreference.FEATURE.isSupported());
         mVibratorStrengthS2S.setEnabled(S2SVibratorStrengthPreference.FEATURE.isSupported());
 
+        findPreference(KEY_CATEGORY_KCAL).setEnabled(DisplayCalibration.isSupported());
+
         if (!isAppInstalled(KEY_DEVICE_DOZE_PACKAGE_NAME)) {
             PreferenceCategory displayCategory = findPreference(KEY_CATEGORY_DISPLAY);
             displayCategory.removePreference(findPreference(KEY_DEVICE_DOZE));
