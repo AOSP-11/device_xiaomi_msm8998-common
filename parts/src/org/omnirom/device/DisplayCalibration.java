@@ -32,6 +32,8 @@ import org.omnirom.device.Preference.KcalSeekBarPreference;
 import org.omnirom.device.utils.FileUtils;
 import org.omnirom.device.utils.UtilsKCAL;
 
+import static org.omnirom.device.utils.FileUtils.isFileWritable;
+
 public final class DisplayCalibration extends PreferenceFragment implements
         OnPreferenceChangeListener {
 
@@ -104,13 +106,18 @@ public final class DisplayCalibration extends PreferenceFragment implements
 
     }
 
-    private boolean isSupported(String file) {
-        return FileUtils.isFileWritable(file);
+    static boolean isSupported() {
+        return isFileWritable(COLOR_FILE_ENABLE) && isFileWritable(COLOR_FILE);
     }
 
     static void restore(SharedPreferences sp) {
         boolean storeEnabled = sp.getBoolean(DisplayCalibration.KEY_KCAL_ENABLED, false);
         Log.d(TAG, "onRestore: isEnabled: " + storeEnabled);
+        if (!isSupported()) {
+            Log.e(TAG, "onRestore: Access denied: " + COLOR_FILE);
+            return;
+        }
+
         if (storeEnabled) {
             FileUtils.writeValue(COLOR_FILE_ENABLE, "1");
             FileUtils.writeValue(COLOR_FILE, "1");
