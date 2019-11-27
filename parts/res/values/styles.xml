@@ -17,6 +17,9 @@
 <resources>
     <style name="AppTheme" parent="@android:style/Theme.DeviceDefault.Settings">
         <item name="preferenceTheme">@style/PreferenceTheme</item>
+        <!-- SeekBarPreference popup view: match default toast style -->
+        <item name="value_popup_view_bg">@color/white_light</item>
+        <item name="value_popup_view_fg">@*android:color/primary_text_default_material_light</item>
     </style>
 
     <style name="PreferenceTheme" parent="@style/PreferenceThemeOverlay.SettingsBase" />
@@ -32,5 +35,17 @@
 
     <style name="Theme.Actionbar.Title" parent="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title">
         <item name="android:textColor">#ff4285f4</item>
+    </style>
+
+    <style name="SeekBarPreferenceChamValueTextAppearance" parent="@*android:style/TextAppearance.Toast" />
+
+    <!-- SeekBarPreferenceCham value popup -->
+    <style name="SeekBarPreferenceChamValueView">
+        <item name="android:textColor">?attr/value_popup_view_fg</item>
+        <item name="android:textAppearance">@style/SeekBarPreferenceChamValueTextAppearance</item>
+        <item name="android:background">@drawable/seekbar_popup_bg</item>
+        <item name="android:paddingHorizontal">24dp</item>
+        <item name="android:paddingVertical">15dp</item>
+        <item name="android:fitsSystemWindows">false</item>
     </style>
 </resources>

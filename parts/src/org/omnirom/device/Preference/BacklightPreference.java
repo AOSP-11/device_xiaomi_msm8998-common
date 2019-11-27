@@ -22,12 +22,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
-import androidx.preference.Preference;
-import androidx.preference.PreferenceViewHolder;
-
-import org.omnirom.device.R;
 import org.omnirom.device.utils.FileUtils;
 
 /**
@@ -35,7 +30,7 @@ import org.omnirom.device.utils.FileUtils;
  * <p>
  * Created by 0ranko0P <ranko0p@outlook.com> on 2019.10.30
  */
-public final class BacklightPreference extends Preference implements SeekBar.OnSeekBarChangeListener {
+public final class BacklightPreference extends SeekBarPreferenceCham {
 
     public static final String KEY_BTN_BRIGHTNESS = "btn_brightness";
 
@@ -45,8 +40,6 @@ public final class BacklightPreference extends Preference implements SeekBar.OnS
 
     private static final String FILE_LED_LEFT = "/sys/class/leds/button-backlight/max_brightness";
     private static final String FILE_LED_RIGHT = "/sys/class/leds/button-backlight1/max_brightness";
-
-    private TextView mValueText;
 
     public static KernelFeature<Integer> FEATURE = new KernelFeature<Integer>() {
 
@@ -89,39 +82,12 @@ public final class BacklightPreference extends Preference implements SeekBar.OnS
 
     public BacklightPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setLayoutResource(R.layout.preference_seek_bar);
+        setProgress(FEATURE.getCurrentValue());
     }
 
     @Override
-    public void onBindViewHolder(PreferenceViewHolder holder) {
-        super.onBindViewHolder(holder);
-        mValueText = (TextView) holder.findViewById(R.id.current_value);
-
-        // Todo: W: I/O operation on main thread
-        int brValue = FEATURE.getCurrentValue();
-        SeekBar mSeekBar = (SeekBar) holder.findViewById(R.id.seekbar);
-        mSeekBar.setMax(BACKLIGHT_MAX_BRIGHTNESS);
-        mSeekBar.setProgress(brValue);
-        mSeekBar.setOnSeekBarChangeListener(this);
-        updateText(brValue);
-    }
-
-
-    private void updateText(int progress) {
-        mValueText.setText(Math.round(progress / PROGRESS_OFFSET) + "%");
-    }
-
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
+        super.onProgressChanged(seekBar, progress, fromTouch);
         FEATURE.applyValue(progress);
-        updateText(progress);
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-        FEATURE.applySharedPreferences(seekBar.getProgress(), getSharedPreferences());
     }
 }

@@ -1,7 +1,11 @@
 <resources>
     <declare-styleable name="SeekBarPreference">
-        <attr name="max_value" format="integer" />
-        <attr name="min_value" format="integer" />
-        <attr name="default_value" format="integer" />
+        <!-- preference -->
+        <attr name="unitsLeft" format="string|reference" />
+        <attr name="unitsRight" format="string|reference" />
+        <attr name="interval" format="integer" />
+        <!-- style -->
+        <attr name="value_popup_view_fg" format="color" />
+        <attr name="value_popup_view_bg" format="color" />
     </declare-styleable>
 </resources>

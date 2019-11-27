@@ -24,14 +24,9 @@ import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
 
-import androidx.preference.Preference;
-import androidx.preference.PreferenceViewHolder;
-
-import org.omnirom.device.R;
 import org.omnirom.device.utils.FileUtils;
 
-public final class S2SVibratorStrengthPreference extends Preference implements
-        SeekBar.OnSeekBarChangeListener {
+public final class S2SVibratorStrengthPreference extends SeekBarPreferenceCham {
 
     public static final String KEY_S2S_VIBSTRENGTH = "s2s_vib_strength";
     private static final String VIB_STRENGTH_FILE = "/sys/sweep2sleep/vib_strength";
@@ -40,7 +35,6 @@ public final class S2SVibratorStrengthPreference extends Preference implements
     private static final int VIB_STRENGTH_MAX = 90;
     private static final int VIB_STRENGTH_DEFAULT = 20;
 
-    private SeekBar mSeekBar;
     private Vibrator mVibrator;
 
     public static final KernelFeature<Integer> FEATURE = new KernelFeature<Integer>() {
@@ -53,7 +47,7 @@ public final class S2SVibratorStrengthPreference extends Preference implements
         @Override
         public Integer getCurrentValue() {
             String currentVal = FileUtils.getFileValue(VIB_STRENGTH_FILE, null);
-            return currentVal == null? VIB_STRENGTH_DEFAULT : Integer.valueOf(currentVal);
+            return currentVal == null ? VIB_STRENGTH_DEFAULT : Integer.valueOf(currentVal);
         }
 
         @Override
@@ -68,7 +62,7 @@ public final class S2SVibratorStrengthPreference extends Preference implements
 
         @Override
         public boolean restore(SharedPreferences sp) {
-            if(!isSupported()) return false;
+            if (!isSupported()) return false;
 
             int storedValue = sp.getInt(KEY_S2S_VIBSTRENGTH, VIB_STRENGTH_DEFAULT);
             return applyValue(storedValue);
@@ -77,30 +71,25 @@ public final class S2SVibratorStrengthPreference extends Preference implements
 
     public S2SVibratorStrengthPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setLayoutResource(R.layout.preference_seek_bar);
         mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        setProgress(FEATURE.getCurrentValue());
     }
-
 
     @Override
-    public void onBindViewHolder(PreferenceViewHolder holder) {
-        super.onBindViewHolder(holder);
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        super.onProgressChanged(seekBar, progress, fromUser);
 
-        mSeekBar = (SeekBar) holder.findViewById(R.id.seekbar);
-        mSeekBar.setMax(VIB_STRENGTH_MAX - VIB_STRENGTH_MIN);
-        mSeekBar.setProgress(FEATURE.getCurrentValue() - VIB_STRENGTH_MIN);
-        mSeekBar.setOnSeekBarChangeListener(this);
+        if (!fromUser && progress > 0) {
+            mVibrator.vibrate(progress);
+            FEATURE.applyValue(progress);
+        }
     }
 
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
-        FEATURE.applyValue(progress + VIB_STRENGTH_MIN);
-    }
-
-    public void onStartTrackingTouch(SeekBar seekBar) {
-    }
-
+    @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        FEATURE.applySharedPreferences(mSeekBar.getProgress(), getSharedPreferences());
-        mVibrator.vibrate(mSeekBar.getProgress());
+        super.onStopTrackingTouch(seekBar);
+        int progress = seekBar.getProgress();
+        FEATURE.applyValue(progress + VIB_STRENGTH_MIN);
+        if (progress != 0) mVibrator.vibrate(progress);
     }
 }
