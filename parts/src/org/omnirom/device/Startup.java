@@ -47,7 +47,7 @@ public final class Startup extends BroadcastReceiver {
             S2SVibratorStrengthPreference.FEATURE.restore(sp);
             SpectrumPreference.FEATURE.restore(sp);
 
-            DisplayCalibration.restore(context);
+            DisplayCalibration.restore(sp);
         }
     }
 }

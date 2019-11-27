@@ -1,26 +1,26 @@
 /*
-* Copyright (C) 2016 The OmniROM Project
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program. If not, see <http://www.gnu.org/licenses/>.
-*
-*/
+ * Copyright (C) 2016 The OmniROM Project
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 
 package org.omnirom.device;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
@@ -34,6 +34,8 @@ import org.omnirom.device.utils.UtilsKCAL;
 
 public final class DisplayCalibration extends PreferenceFragment implements
         OnPreferenceChangeListener {
+
+    private static final String TAG = "DisplayCalibration";
 
     public static final String KEY_KCAL_ENABLED = "kcal_enabled";
     public static final String KEY_KCAL_RED = "kcal_red";
@@ -51,7 +53,6 @@ public final class DisplayCalibration extends PreferenceFragment implements
     private KcalSeekBarPreference mKcalColorTemp;
     private SharedPreferences mPrefs;
     private SwitchPreference mKcalEnabled;
-    private boolean mEnabled;
 
     private String mRed;
     private String mBlue;
@@ -81,15 +82,15 @@ public final class DisplayCalibration extends PreferenceFragment implements
         mKcalGreen.setProgress(mPrefs.getInt(KEY_KCAL_GREEN, mKcalGreen.getDefault()));
         mKcalGreen.setOnPreferenceChangeListener(this);
 
-        mKcalBlue =  findPreference(KEY_KCAL_BLUE);
+        mKcalBlue = findPreference(KEY_KCAL_BLUE);
         mKcalBlue.setProgress(mPrefs.getInt(KEY_KCAL_BLUE, mKcalBlue.getDefault()));
         mKcalBlue.setOnPreferenceChangeListener(this);
 
-        mKcalSaturation =  findPreference(KEY_KCAL_SATURATION);
+        mKcalSaturation = findPreference(KEY_KCAL_SATURATION);
         mKcalSaturation.setProgress(mPrefs.getInt(KEY_KCAL_SATURATION, mKcalSaturation.getDefault()));
         mKcalSaturation.setOnPreferenceChangeListener(this);
 
-        mKcalContrast =  findPreference(KEY_KCAL_CONTRAST);
+        mKcalContrast = findPreference(KEY_KCAL_CONTRAST);
         mKcalContrast.setProgress(mPrefs.getInt(KEY_KCAL_CONTRAST, mKcalContrast.getDefault()));
         mKcalContrast.setOnPreferenceChangeListener(this);
 
@@ -107,27 +108,24 @@ public final class DisplayCalibration extends PreferenceFragment implements
         return FileUtils.isFileWritable(file);
     }
 
-    static void restore(Context context) {
-       boolean storeEnabled = PreferenceManager
-                .getDefaultSharedPreferences(context).getBoolean(DisplayCalibration.KEY_KCAL_ENABLED, false);
-       if (storeEnabled) {
-           FileUtils.writeValue(COLOR_FILE_ENABLE, "1");
-           FileUtils.writeValue(COLOR_FILE, "1");
-           int storedRed = PreferenceManager
-                   .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_RED, 256);
-           int storedGreen = PreferenceManager
-                   .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_GREEN, 256);
-           int storedBlue = PreferenceManager
-                   .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_BLUE, 256);
-           int storedSaturation = PreferenceManager
-                   .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_SATURATION, 255);
-           int storedContrast = PreferenceManager
-                   .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_CONTRAST, 255);
-           String storedValue = (storedRed + " " + storedGreen + " " + storedBlue);
-           FileUtils.writeValue(COLOR_FILE, storedValue);
-           FileUtils.writeValue(COLOR_FILE_CONTRAST, String.valueOf(storedContrast));
-           FileUtils.writeValue(COLOR_FILE_SATURATION, String.valueOf(storedSaturation));
-       }
+    static void restore(SharedPreferences sp) {
+        boolean storeEnabled = sp.getBoolean(DisplayCalibration.KEY_KCAL_ENABLED, false);
+        Log.d(TAG, "onRestore: isEnabled: " + storeEnabled);
+        if (storeEnabled) {
+            FileUtils.writeValue(COLOR_FILE_ENABLE, "1");
+            FileUtils.writeValue(COLOR_FILE, "1");
+            int storedRed = sp.getInt(DisplayCalibration.KEY_KCAL_RED, 256);
+            int storedGreen = sp.getInt(DisplayCalibration.KEY_KCAL_GREEN, 256);
+            int storedBlue = sp.getInt(DisplayCalibration.KEY_KCAL_BLUE, 256);
+            int storedSaturation = sp.getInt(DisplayCalibration.KEY_KCAL_SATURATION, 255);
+            int storedContrast = sp.getInt(DisplayCalibration.KEY_KCAL_CONTRAST, 255);
+
+            Log.d(TAG, "onRestore: R: " + storedRed + ", G: " + storedGreen + ",B: " + storedBlue);
+            Log.d(TAG, "onRestore: Sa: " + storedSaturation +", contrast: " + storedContrast);
+            FileUtils.writeValue(COLOR_FILE, storedRed + " " + storedGreen + " " + storedBlue);
+            FileUtils.writeValue(COLOR_FILE_CONTRAST, String.valueOf(storedContrast));
+            FileUtils.writeValue(COLOR_FILE_SATURATION, String.valueOf(storedSaturation));
+        }
     }
 
     void reset() {
@@ -156,86 +154,76 @@ public final class DisplayCalibration extends PreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mKcalEnabled) {
-            Boolean enabled = (Boolean) newValue;
-            mPrefs.edit().putBoolean(KEY_KCAL_ENABLED, enabled).commit();
-            mRed = String.valueOf(mPrefs.getInt(KEY_KCAL_RED, 256));
-            mBlue = String.valueOf(mPrefs.getInt(KEY_KCAL_BLUE, 256));
-            mGreen = String.valueOf(mPrefs.getInt(KEY_KCAL_GREEN, 256));
-            String storedValue = (mRed + " " + mGreen + " " + mBlue);
-            String mSaturation = String.valueOf(mPrefs.getInt(KEY_KCAL_SATURATION, 256));
-            String mContrast = String.valueOf(mPrefs.getInt(KEY_KCAL_CONTRAST, 256));
-            FileUtils.writeValue(COLOR_FILE_ENABLE, enabled ? "1" : "0");
-            FileUtils.writeValue(COLOR_FILE, storedValue);
-            FileUtils.writeValue(COLOR_FILE_SATURATION, mSaturation);
-            FileUtils.writeValue(COLOR_FILE_CONTRAST, mContrast);
+        final String key = preference.getKey();
+        switch (key) {
+            case KEY_KCAL_RED:
+            case KEY_KCAL_GREEN:
+            case KEY_KCAL_BLUE:
+                return updateRGB(key, (Integer) newValue);
+            case KEY_KCAL_COLOR_TEMP:
+                int color = Integer.parseInt(newValue.toString());
+                int[] colorTemp = UtilsKCAL.RGBfromK(color);
+                int red = colorTemp[0];
+                int green = colorTemp[1];
+                int blue = colorTemp[2];
 
-            int cct = UtilsKCAL.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256), mPrefs.getInt(KEY_KCAL_GREEN, 256), mPrefs.getInt(KEY_KCAL_BLUE, 256));
-            mKcalColorTemp.setValue(cct);
-            return true;
-        } else if (preference == mKcalRed) {
-            float val = Float.parseFloat(newValue.toString());
-            mPrefs.edit().putInt(KEY_KCAL_RED, (int) val).commit();
-            mGreen = String.valueOf(mPrefs.getInt(KEY_KCAL_GREEN, 256));
-            mBlue = String.valueOf(mPrefs.getInt(KEY_KCAL_BLUE, 256));
-            String strVal = (newValue + " " + mGreen + " " +mBlue);
-            FileUtils.writeValue(COLOR_FILE, strVal);
+                mKcalRed.setValue(red);
+                mKcalGreen.setValue(green);
+                mKcalBlue.setValue(blue);
 
-            int cct = UtilsKCAL.KfromRGB(val, mPrefs.getInt(KEY_KCAL_GREEN, 256), mPrefs.getInt(KEY_KCAL_BLUE, 256));
-            mKcalColorTemp.setValue(cct);
-            return true;
-        } else if (preference == mKcalGreen) {
-            float val = Float.parseFloat(newValue.toString());
-            mPrefs.edit().putInt(KEY_KCAL_GREEN, (int) val).commit();
-            mRed = String.valueOf(mPrefs.getInt(KEY_KCAL_RED, 256));
-            mBlue = String.valueOf(mPrefs.getInt(KEY_KCAL_BLUE, 256));
-            String strVal = (mRed + " " + newValue + " " +mBlue);
-            FileUtils.writeValue(COLOR_FILE, strVal);
+                mPrefs.edit().putInt(KEY_KCAL_RED, red)
+                        .putInt(KEY_KCAL_GREEN, green)
+                        .putInt(KEY_KCAL_BLUE, blue)
+                        .apply();
 
-            int cct = UtilsKCAL.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256), val, mPrefs.getInt(KEY_KCAL_BLUE, 256));
-            mKcalColorTemp.setValue(cct);
-            return true;
-        } else if (preference == mKcalBlue) {
-            float val = Float.parseFloat(newValue.toString());
-            mPrefs.edit().putInt(KEY_KCAL_BLUE, (int) val).commit();
-            mRed = String.valueOf(mPrefs.getInt(KEY_KCAL_RED, 256));
-            mGreen = String.valueOf(mPrefs.getInt(KEY_KCAL_GREEN, 256));
-            String strVal = (mRed + " " + mGreen + " " +newValue);
-            FileUtils.writeValue(COLOR_FILE, strVal);
+                FileUtils.writeValue(COLOR_FILE, red + " " + green + " " + blue);
+                return true;
+            case KEY_KCAL_ENABLED:
+                Boolean enabled = (Boolean) newValue;
+                mPrefs.edit().putBoolean(KEY_KCAL_ENABLED, enabled).apply();
+                mRed = String.valueOf(mPrefs.getInt(KEY_KCAL_RED, 256));
+                mBlue = String.valueOf(mPrefs.getInt(KEY_KCAL_BLUE, 256));
+                mGreen = String.valueOf(mPrefs.getInt(KEY_KCAL_GREEN, 256));
+                String storedValue = (mRed + " " + mGreen + " " + mBlue);
+                String mSaturation = String.valueOf(mPrefs.getInt(KEY_KCAL_SATURATION, 256));
+                String mContrast = String.valueOf(mPrefs.getInt(KEY_KCAL_CONTRAST, 256));
+                FileUtils.writeValue(COLOR_FILE_ENABLE, enabled ? "1" : "0");
+                FileUtils.writeValue(COLOR_FILE, storedValue);
+                FileUtils.writeValue(COLOR_FILE_SATURATION, mSaturation);
+                FileUtils.writeValue(COLOR_FILE_CONTRAST, mContrast);
 
-            int cct = UtilsKCAL.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256), mPrefs.getInt(KEY_KCAL_GREEN, 256), val);
-            mKcalColorTemp.setValue(cct);
-            return true;
-        } else if (preference == mKcalSaturation) {
-            float val = Float.parseFloat((newValue.toString()));
-            mPrefs.edit().putInt(KEY_KCAL_SATURATION, (int) val).commit();
-            FileUtils.writeValue(COLOR_FILE_SATURATION, newValue.toString());
-            return true;
-        } else if (preference == mKcalContrast) {
-            float val = Float.parseFloat(newValue.toString());
-            mPrefs.edit().putInt(KEY_KCAL_CONTRAST, (int) val).commit();
-            FileUtils.writeValue(COLOR_FILE_CONTRAST, newValue.toString());
-            return true;
-        } else if (preference == mKcalColorTemp) {
-            int val = Integer.parseInt(newValue.toString());
-            int[] colorTemp = UtilsKCAL.RGBfromK(val);
-            int red = colorTemp[0];
-            int green = colorTemp[1];
-            int blue = colorTemp[2];
-
-            mKcalRed.setValue(red);
-            mKcalGreen.setValue(green);
-            mKcalBlue.setValue(blue);
-
-            mPrefs.edit().putInt(KEY_KCAL_RED, red)
-                    .putInt(KEY_KCAL_GREEN, green)
-                    .putInt(KEY_KCAL_BLUE, blue)
-                    .apply();
-
-            String storedValue = red + " " + green + " " + blue;
-            FileUtils.writeValue(COLOR_FILE, storedValue);
-            return true;
+                int cct = UtilsKCAL.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256), mPrefs.getInt(KEY_KCAL_GREEN, 256), mPrefs.getInt(KEY_KCAL_BLUE, 256));
+                mKcalColorTemp.setValue(cct);
+                return true;
+            case KEY_KCAL_SATURATION:
+                mPrefs.edit().putInt(KEY_KCAL_SATURATION, (int) newValue).apply();
+                FileUtils.writeValue(COLOR_FILE_SATURATION, newValue.toString());
+                return true;
+            case KEY_KCAL_CONTRAST:
+                mPrefs.edit().putInt(KEY_KCAL_CONTRAST, (int) newValue).apply();
+                FileUtils.writeValue(COLOR_FILE_CONTRAST, newValue.toString());
+                return true;
+            default:
+                throw new RuntimeException("WTF: Unimplemented preference: " + preference.getKey());
         }
-        return false;
+    }
+
+    private boolean updateRGB(String key, Integer newVal) {
+        // save new color value
+        if (!mPrefs.edit().putInt(key, newVal).commit()) return false;
+
+        // apply new RGB color to kernel
+        int r = mPrefs.getInt(KEY_KCAL_RED, 256);
+        int g = mPrefs.getInt(KEY_KCAL_GREEN, 256);
+        int b = mPrefs.getInt(KEY_KCAL_BLUE, 256);
+
+        mKcalColorTemp.setValue(UtilsKCAL.KfromRGB(r, g, b));
+
+        mRed = String.valueOf(r);
+        mGreen = String.valueOf(g);
+        mBlue = String.valueOf(b);
+        String strVal = (mRed + " " + mGreen + " " + mBlue);
+        FileUtils.writeValue(COLOR_FILE, strVal);
+        return true;
     }
 }
