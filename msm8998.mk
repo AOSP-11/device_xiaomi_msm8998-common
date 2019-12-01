@@ -364,7 +364,9 @@ PRODUCT_PACKAGES += \
 
 # VNDK
 PRODUCT_PACKAGES += \
-    vndk_package
+    libdng_sdk.vendor_32 \
+    libstdc++.vendor_32 \
+    vndk-ext
 
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
