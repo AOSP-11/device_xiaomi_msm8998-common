@@ -62,7 +62,14 @@
     <string name="fastcharge_title">开启 USB 快速充电</string>
     <string name="fastcharge_summary">连接到计算机 USB 3.X 接口时，可以使用快速充电</string>
 
+    <!-- dirac -->
+    <string name="sound_title">声音</string>
+    <string name="xiaomi_dirac_title">米音</string>
+    <string name="xiaomi_dirac_summary">使用米音提升音质</string>
+
+    <!-- seekbar -->
     <string name="seekbar_no_default_value">未设置任何默认选项</string>
     <string name="seekbar_default_value_set">设定预设值为<xliff:g id="number">%d</xliff:g></string>
     <string name="seekbar_default_value_already_set">已设置默认值</string>
+
 </resources>

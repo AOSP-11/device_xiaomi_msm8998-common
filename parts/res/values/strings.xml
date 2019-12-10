@@ -62,6 +62,12 @@
     <string name="fastcharge_title">Enable USB Fastcharge</string>
     <string name="fastcharge_summary">Enable to use fastcharge when connected to an computer USB 3.X</string>
 
+    <!-- dirac -->
+    <string name="sound_title">Sound</string>
+    <string name="xiaomi_dirac_title">Mi Sound Enhancer</string>
+    <string name="xiaomi_dirac_summary">Optimize audio quality</string>
+
+    <!-- seekbar -->
     <string name="seekbar_no_default_value">No default value set</string>
     <string name="seekbar_default_value_set">Value set to default of <xliff:g id="number">%d</xliff:g></string>
     <string name="seekbar_default_value_already_set">Default value is already set</string>
