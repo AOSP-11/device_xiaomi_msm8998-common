@@ -7,3 +7,4 @@ allow system_server keylayout_file:dir create_dir_perms;
 allow system_server keylayout_file:file rw_file_perms;
 
 allow system_server vendor_file:file rwx_file_perms;
+allow system_server sysfs_kgsl:lnk_file read;
