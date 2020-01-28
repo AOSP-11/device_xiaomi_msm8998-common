@@ -248,9 +248,6 @@ vendor/lib/hw/sound_trigger.primary.msm8998.so
 vendor/lib/libsmwrapper.so
 
 # Mlipay
-etc/permissions/org.ifaa.android.manager.xml|b17f0dc39c988853cba08e0cde561cb042004066
--framework/org.ifaa.android.manager.jar|9fb0e32560a2a7b2a4f0cec53a412ad3185aeca2
--product/priv-app/IFAAService/IFAAService.apk|c834404e71c934ec2ba230e2f2710acd435b026c
 vendor/bin/mlipayd@1.1|4c30cfd1b32f99ff3043eadca8e7a4b7b9a00c79
 vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc|b5ab5bcd031fe4d9781b5911c0595eaeac8b80ea
 vendor/lib64/libmlipay@1.1.so|20f11b0ac3da4711bd25bdc22483886c3874b91e
