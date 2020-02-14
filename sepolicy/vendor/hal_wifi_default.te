@@ -1,3 +1,0 @@
-allow hal_wifi_default debugfs_wlan:dir r_dir_perms;
-allow hal_wifi_default default_prop:property_service set;
-allow hal_wifi_default proc_net:file write;

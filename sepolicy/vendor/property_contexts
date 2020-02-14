@@ -5,17 +5,17 @@ camera.s5k3m3.actuator.update                                 u:object_r:camera_
 persist.camera.                                               u:object_r:camera_prop:s0
 persist.vendor.camera.                                        u:object_r:camera_prop:s0
 
+# cnss-daemon
+persist.vendor.wigig.npt.enable   u:object_r:cnss_prop:s0
+
 # Fingerprint
 persist.vendor.sys.fp.                                        u:object_r:vendor_fp_prop:s0
 ro.boot.fpsensor                                              u:object_r:vendor_fp_prop:s0
 
 # Mlipay
-ro.boot.cpuid                                                 u:object_r:vendor_system_prop:s0
-vendor.sys.rpmb_state                                         u:object_r:vendor_tee_listener_prop:s0
 persist.vendor.sys.pay.fido                                   u:object_r:vendor_tee_listener_prop:s0
 persist.vendor.sys.pay.ifaa                                   u:object_r:vendor_tee_listener_prop:s0
 persist.vendor.sys.pay.soter                                  u:object_r:vendor_tee_listener_prop:s0
-persist.vendor.sys.provision.status                           u:object_r:vendor_tee_listener_prop:s0
 
 # Radio
 ril.fake_bs_flag0                                             u:object_r:system_radio_prop:s0

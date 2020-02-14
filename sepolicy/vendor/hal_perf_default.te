@@ -1,1 +1,0 @@
-allow hal_perf_default sysfs:dir create_dir_perms;

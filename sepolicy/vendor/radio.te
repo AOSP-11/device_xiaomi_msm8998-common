@@ -1,3 +1,0 @@
-allow radio vendor_file:file rwx_file_perms;
-allow radio gpuservice:binder call;
-allow radio sysfs_kgsl:dir create_dir_perms;
