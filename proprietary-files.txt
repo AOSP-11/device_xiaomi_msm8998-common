@@ -252,6 +252,20 @@ vendor/lib64/vendor.xiaomi.hardware.mlipay@1.1.so
 # NFC firmware
 vendor/lib/libpn553_fw.so
 
+# Perf configs
+vendor/etc/perf/commonresourceconfigs.xml
+vendor/etc/perf/perf-profile0.conf
+vendor/etc/perf/perf-profile1.conf
+vendor/etc/perf/perf-profile2.conf
+vendor/etc/perf/perf-profile3.conf
+vendor/etc/perf/perf-profile4.conf
+vendor/etc/perf/perf-profile5.conf
+vendor/etc/perf/perf-profile6.conf
+vendor/etc/perf/perfboostsconfig.xml
+vendor/etc/perf/targetconfig.xml
+vendor/etc/perf/targetresourceconfigs.xml
+vendor/etc/powerhint.xml
+
 # Sensors
 vendor/bin/sensors.qti
 vendor/lib/hw/activity_recognition.msm8998.so
@@ -266,6 +280,9 @@ vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
 vendor/lib64/libsns_low_lat_stream_stub.so
 vendor/lib64/sensors.ssc.so
+
+# Soter
+-app/SoterService/SoterService.apk
 
 # Thermal
 vendor/etc/thermal-engine.conf
