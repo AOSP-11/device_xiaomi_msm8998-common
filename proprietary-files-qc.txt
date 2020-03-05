@@ -50,6 +50,14 @@ vendor/lib64/libbtnv.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so
 
+# Bluetooth Audio - from LA.UM.8.2.r1-05700-sdm660.0
+vendor/lib/btaudio_offload_if.so
+vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
+vendor/lib/libbluetooth_audio_session_qti.so
+vendor/lib64/btaudio_offload_if.so
+vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
+vendor/lib64/libbluetooth_audio_session_qti.so
+
 # Bluetooth aptX(HD) - from walleye QP1A.190711.020
 product/lib64/libaptX_encoder.so
 product/lib64/libaptXHD_encoder.so
