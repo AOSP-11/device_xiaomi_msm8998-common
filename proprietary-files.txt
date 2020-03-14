@@ -254,20 +254,6 @@ vendor/lib64/vendor.xiaomi.hardware.mlipay@1.1.so|4611f408f9bf230594533103e61456
 # NFC firmware
 vendor/lib/libpn553_fw.so
 
-# Perf configs
-vendor/etc/perf/commonresourceconfigs.xml
-vendor/etc/perf/perf-profile0.conf
-vendor/etc/perf/perf-profile1.conf
-vendor/etc/perf/perf-profile2.conf
-vendor/etc/perf/perf-profile3.conf
-vendor/etc/perf/perf-profile4.conf
-vendor/etc/perf/perf-profile5.conf
-vendor/etc/perf/perf-profile6.conf
-vendor/etc/perf/perfboostsconfig.xml
-vendor/etc/perf/targetconfig.xml
-vendor/etc/perf/targetresourceconfigs.xml
-vendor/etc/powerhint.xml
-
 # Sensors
 vendor/bin/sensors.qti
 vendor/lib/hw/activity_recognition.msm8998.so

@@ -301,22 +301,37 @@ vendor/lib64/libOmxG711Dec.so|0a94e28f0b70e2bd8924f5aecc926ccb4a8a49e9
 vendor/lib64/libOmxQcelp13Dec.so|d8bb8a5c999a2f2e3a7e717d422ab43c90ab9028
 vendor/lib64/libOmxWmaDec.so|8f8ef46403b739859f97f1fe54dff8c30b57cebb
 
-# Perf - from LA.UM.8.2.r1-05700-sdm660.0
+# Perf - from LA.UM.8.4.r1-05200-8x98.0
 vendor/bin/hw/vendor.qti.hardware.perf@2.0-service|3478f1a1de33d39b239f54e47b85dde6f01578c5
 vendor/etc/init/vendor.qti.hardware.perf@2.0-service.rc|cc8658db5e19f8e5e575fb986e7d38147e675f8d
-vendor/lib/libperfconfig.so|3fabe6d587329cbb619514cc36896cd97c94a113
+vendor/lib/libperfconfig.so|ee0f546bfc49ec46c2dc83891812b70d1300dc05
 vendor/lib/libqti-perfd-client.so|2c488bc54a6ba25c6dab51dcb538efe6b0ae2b86
-vendor/lib/libqti-perfd.so|62a2831b0dd64c982c419d1e22cc6e1cf11533b1
-vendor/lib/libqti-util.so|4c77c24bd8db8d80eddea739b2a7809e78613e06
+vendor/lib/libqti-perfd.so|20100a428c5aec1b82767af652f5045802a783ee
+vendor/lib/libqti-util.so|b9610a3448b53d007965e1572a0d6c65414052ff
 vendor/lib/vendor.qti.hardware.perf@1.0.so|b88ddafbc38b43701c7fcd163c28a899c7117394
 vendor/lib/vendor.qti.hardware.perf@2.0.so|9b4983ba1941496f4ba06b646a0397d635ca8f32
-vendor/lib64/libperfconfig.so|391033893fe1889a608b4351f58e0c4b09c3a14b
+vendor/lib64/libperfconfig.so|17c83dc1a38588c7311acb970e5f5a8da742ba80
 vendor/lib64/libperfgluelayer.so|4c95e08abc1cef5b39db06579d8f9faceb8f23d4
 vendor/lib64/libqti-perfd-client.so|0c2b82b5e5df6e0efb03ace4a259eb63487dd2b6
-vendor/lib64/libqti-perfd.so|c58d1192cff3f9c8fc00a064e14346fc0886c840
-vendor/lib64/libqti-util.so|9f5f18d548e3c3b39fbfe0ad078ea7ad4399b70e
+vendor/lib64/libqti-perfd.so|7a6c75d2ec8ba7ed6bf17ef048c3c79a1a2daf53
+vendor/lib64/libqti-util.so|45a80be449435d277f09cc59e4a315fa86072c41
 vendor/lib64/vendor.qti.hardware.perf@1.0.so|c2488dcb941e33a910f2096b0953a24e0b4071a3
 vendor/lib64/vendor.qti.hardware.perf@2.0.so|b05e762bf5c7e86b0d6c1be4c8ae91e3f706dca7
+
+# Perf configs - from LA.UM.8.4.r1-05200-8x98.0
+vendor/etc/perf/commonresourceconfigs.xml|42005b8a9ec8a527d22800e3aaa9215e6d58c8a9
+vendor/etc/perf/perf-profile0.conf|02204355bf29ceb0460cd53e6716552bb9d9b05f
+vendor/etc/perf/perf-profile1.conf|4056b772f2790ffd2f466275be8f03e4a796b55c
+vendor/etc/perf/perf-profile2.conf|341790cfe6d82602ef354b821c5cfdec0dad76e3
+vendor/etc/perf/perf-profile3.conf|eb70ebc87c8a079b0706fa7ac1fb02ff60a7bdc5
+vendor/etc/perf/perf-profile4.conf|530f7ab890fa9ca44e90944deb1a66ef79613c5e
+vendor/etc/perf/perf-profile5.conf|55d67b5afb0cc56e4fe5e9515226be346c9daefc
+vendor/etc/perf/perf-profile6.conf|910a193b8425bbe0080f746d6788e66986b2e762
+vendor/etc/perf/perfboostsconfig.xml|e1bf339ef22cbeb85d5f98bd67ab1946ae73999a
+vendor/etc/perf/perfconfigstore.xml|b1d147be38c5a11f13cab051360226ef15b432c5
+vendor/etc/perf/targetconfig.xml|460d39ad0a0e7c54a94ba92647ea2b995fc0fe18
+vendor/etc/perf/targetresourceconfigs.xml|4f674836df32fd51e2bc09f3b56af7ad1a6021a0
+vendor/etc/powerhint.xml|72512bd069cd88ed8d1ad6a23d1b1341d5ab8997
 
 # Peripheral manager - from LA.UM.8.2.r1-05700-sdm660.0
 vendor/bin/pm-proxy|bd8cf7d8228db1556cb9d1b933f3d4ab230ddba4
