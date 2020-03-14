@@ -27,6 +27,10 @@ persist.vendor.sys.pay.soter                                  u:object_r:vendor_
 ril.fake_bs_flag0                                             u:object_r:vendor_radio_prop:s0
 ril.fake_bs_flag1                                             u:object_r:vendor_radio_prop:s0
 
+# Recovery
+ro.build.expect.firmware                                      u:object_r:exported_default_prop:s0
+ro.build.expect.trustzone                                     u:object_r:exported_default_prop:s0
+
 # Sensors
 sys.panel.                                                    u:object_r:sensors_panel_prop:s0
 
