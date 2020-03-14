@@ -1,20 +1,3 @@
-# ADSP - from LA.UM.8.2.r1-05700-sdm660.0
-vendor/bin/adsprpcd|5b803e679ddbce4e59c2a67433ffefa6396d61f3
-vendor/lib/libadsp_default_listener.so|9c96cb953e83b6abc90dfbf4b62af7ddbecd97b7
-vendor/lib/libadsp_hvx_callback_skel.so|67cb46e6da3fa84d0cf086172591ba13493e663f
-vendor/lib/libadsp_hvx_stub.so|b3e1d3eef6cfdd51213dad37a8972bc931d1c139
-vendor/lib/libadsprpc.so|c95566209eff0d3e6e7edb3166273ad20dd03297
-vendor/lib/libfastcvadsp_stub.so|9957df1493863d78da261ab3bb8756be3f3d2583
-vendor/lib/libfastcvopt.so|00f5293affa2fcc606b0044f707761c0bb975365
-vendor/lib/libmdsprpc.so|6b3c9f62d95ba9a65d9ce2d21530fa36ebed2414
-vendor/lib/libsdsprpc.so|09e6c5093e6322c71ca98c53865aa5402e415538
-vendor/lib64/libadsp_default_listener.so|ec9a452e318db1ddc5d826dd7cc2b14dd5fb2a14
-vendor/lib64/libadsprpc.so|54fea5f7c11b9913ed2eeb125804e0fb32ed5e21
-vendor/lib64/libfastcvadsp_stub.so|f84fd537f8f176e598c0cb49f0c457f308b67be4
-vendor/lib64/libfastcvopt.so|59d111f7472ed70390d15944a5f304db848447e4
-vendor/lib64/libmdsprpc.so|f9eb09c64dcd2ec4356bab8d1d242901d271edb0
-vendor/lib64/libsdsprpc.so|99b6b23efeefc5204fb9eb0fb174b73494c7602b
-
 # Alarm - from QKQ1.190910.002 V11.0.4.0.QDIMIXM
 -product/app/PowerOffAlarm/PowerOffAlarm.apk|46387fe02067df3c4c09ec49fff7737473ea1145
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service|faccc2a7d94d486c2f61a5fe85f5c4598b4147a7
@@ -552,12 +535,6 @@ vendor/lib/libsubsystem_control.so|fe08da9f6a0e73a97231055c4ca8279a68432476
 vendor/lib/libSubSystemShutdown.so|cb1166f1cdb63f1ab7a9c3726ff1d97788888d8c
 vendor/lib64/libsubsystem_control.so|b2e8c7eb9d999137ae99ea38f85d7dac59c6dcc2
 vendor/lib64/libSubSystemShutdown.so|b7933a8863683f3aaf85cf4b4f183b95136eca1a
-
-# Thermal - from LA.UM.8.2.r1-05700-sdm660.0
--vendor/lib/libthermalclient.so|34b6ee056ae8a6df578fc243f8acd3567a49d97b
--vendor/lib64/libthermalclient.so|20f1fd238fc81bf1c6828ec416121c0ef66e0df1
-vendor/bin/thermal-engine|3902797191523131b21819b70e26f258ed00cbed
-vendor/lib64/libthermalioctl.so|e1844c66a556946b45bcb6c2e747460aa5201770
 
 # Time services - from LA.UM.8.2.r1-05700-sdm660.0
 -vendor/app/TimeService/TimeService.apk|4a37afd1395758d946580af184a738e3c657b1e2
