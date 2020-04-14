@@ -110,7 +110,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.ts.rtmakeup=false \
     persist.vendor.camera.HAL3.enabled=1 \
     persist.vendor.camera.set.afd=4 \
-    persist.vendor.dualcam.lpm.enable=1 \
     vidc.enc.dcvs.extra-buff-count=2 \
     camera.shutter_sound.blacklist=com.android.camera \
     vendor.camera.aux.packagelist=com.android.camera,org.lineageos.snap \
