@@ -417,7 +417,8 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     hostapd \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    WifiOverlay
 
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service
