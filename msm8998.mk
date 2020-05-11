@@ -342,6 +342,8 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
+    android.hardware.radio.config@1.1 \
+    android.hardware.radio@1.1 \
     librmnetctl
 
 # Seccomp policy
@@ -356,7 +358,7 @@ PRODUCT_PACKAGES += \
 
 # Soong
 PRODUCT_SOONG_NAMESPACES += \
-    device/xiaomi/msm8998-common
+    $(LOCAL_PATH)
 
 # Telephony
 PRODUCT_PACKAGES += \

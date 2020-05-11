@@ -180,22 +180,12 @@ vendor/lib/libois_bu63164.so
 # Charger
 vendor/bin/hvdcp_opti
 
-# Dirac - from Xiaomi
+# Dirac - from jasmine-user-10-QKQ1.190910.002-V11.0.4.0.QDIMIXM
 etc/permissions/audiosphere.xml|3c6d8f14bd99e52a424282fd5d0a5b9b06485dea
 framework/audiosphere.jar|c1679f5aca56f0cb24745b3f7d219acd04833bed
 vendor/etc/diracmobile.config|d781cd6798a7481a8f7128d144abfb2b8794212d
 vendor/lib/libDiracAPI_SHARED.so|42b49679d38eca93fead05ea06ddbdc8108fd4b1
 vendor/lib/soundfx/libdirac.so|f63826a905b520fa524e4c1b147be7cf65240953
-
-# Fido - from Xiaomi
-lib/libFidoCrypto_system.so|c538c239bb97553a4683662d6ed6567b3c5033cd
-lib/libFidoCryptoJNI.so|16c2a50b7da470440032e51867f95653cb1c6406
-lib64/libFidoCrypto_system.so|5f5254c97e4b4457e31da70843a004030411a8f3
-lib64/libFidoCryptoJNI.so|bb9ee88f7696d5a66da2a0cd2daed429c274fd23
-vendor/lib/libFidoCrypto_vendor.so|5911ca84a7beba33620c7468e03c685c32ea1a17
-vendor/lib/libFIDOKeyProvisioning.so|35703aca065213fa86f095a557ae2dbebccfe336
-vendor/lib64/libFidoCrypto_vendor.so|4cc8d054895e7eb78b35c42cbcf7d0184e9e88f4
-vendor/lib64/libFIDOKeyProvisioning.so|4df3293d1c62a5b1454d5162298a09a61d0d9c38
 
 # Gatekeeper
 vendor/lib64/hw/gatekeeper.msm8998.so
@@ -249,13 +239,23 @@ vendor/lib64/hw/keystore.msm8998.so
 vendor/lib/hw/sound_trigger.primary.msm8998.so
 vendor/lib/libsmwrapper.so
 
-# Mlipay - from Xiaomi
-vendor/bin/mlipayd@1.1|4c30cfd1b32f99ff3043eadca8e7a4b7b9a00c79
-vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc|b5ab5bcd031fe4d9781b5911c0595eaeac8b80ea
-vendor/lib64/libmlipay.so|b124db2f7dbe0dde6a96b1f14fa38de7ed407d9a
-vendor/lib64/libmlipay@1.1.so|092e6a08b8d46a444c4e76f5ba3e77ec446ab56d
-vendor/lib64/vendor.xiaomi.hardware.mlipay@1.0.so|c90f47cc012a338c4f334e6f8c2b3e50dbf2ef40
-vendor/lib64/vendor.xiaomi.hardware.mlipay@1.1.so|4611f408f9bf230594533103e61456ebdc075a32
+# Media
+-vendor/lib/libgpustats.so
+-vendor/lib64/libgpustats.so
+vendor/lib/libOmxEvrcDec.so
+vendor/lib/libOmxVpp.so
+vendor/lib/libvpphvx.so
+vendor/lib/libvpplibrary.so
+vendor/lib/libvqzip.so
+
+# Mlipay
+lib64/vendor.xiaomi.hardware.mlipay@1.0.so:vendor/lib64/vendor.xiaomi.hardware.mlipay@1.0.so
+lib64/vendor.xiaomi.hardware.mlipay@1.1.so:vendor/lib64/vendor.xiaomi.hardware.mlipay@1.1.so
+lib64/vendor.xiaomi.hardware.mtdservice@1.0.so:vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.0.so
+vendor/bin/mlipayd@1.1
+vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc
+vendor/lib64/libmlipay.so
+vendor/lib64/libmlipay@1.1.so
 
 # NFC firmware
 vendor/lib/libpn553_fw.so
@@ -277,6 +277,10 @@ vendor/lib64/sensors.ssc.so
 
 # Soter
 -app/SoterService/SoterService.apk
+lib64/vendor.qti.hardware.soter@1.0.so:vendor/lib64/vendor.qti.hardware.soter@1.0.so
+vendor/bin/hw/vendor.qti.hardware.soter@1.0-service
+vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc
+vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so
 
 # Thermal
 vendor/bin/thermal-engine
