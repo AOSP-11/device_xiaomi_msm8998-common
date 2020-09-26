@@ -60,6 +60,15 @@ fi
 function blob_fixup() {
     case "${1}" in
     lib64/libwfdnative.so)
+        patchelf --add-needed "libshim_wfdservice.so" "${2}"
+        ;;
+    lib/libwfdcommonutils.so)
+        patchelf --add-needed "libshim_wfdservice.so" "${2}"
+        ;;
+    lib/libwfdmmsrc.so)
+        patchelf --add-needed "libshim_wfdservice.so" "${2}"
+        ;;
+    lib64/libwfdnative.so)
         patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
         ;;
     vendor/etc/permissions/qti_libpermissions.xml)
