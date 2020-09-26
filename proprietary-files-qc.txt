@@ -319,7 +319,7 @@ vendor/lib64/libqmiservices.so|60819bb328bcd2948fd0fe0c8caa9dd67680809c
 -product/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|71d083671c3ea4cd5e287a63fb254bb0ab60ed20
 product/etc/permissions/qcrilhook.xml|ceb890ab3c1645aa0d0044abab1ba58c4097a991
 product/framework/qcrilhook.jar|23768fda90519d799e682fd058ec85b7b5cd6f89
-product/framework/qti-telephony-common.jar|14e32b1cb0fdc9d7802414e95e41376499b51b11
+#product/framework/qti-telephony-common.jar|14e32b1cb0fdc9d7802414e95e41376499b51b11
 vendor/bin/ATFWD-daemon|540d63133a5edb0e4e39fd0ec6bcf34939f58ca6
 vendor/bin/netmgrd|8818e9adb56f976447352585bbd44478cd2c4300
 vendor/bin/qti|fb6e4de508ddbabf9d8468247714caf810638b6c
