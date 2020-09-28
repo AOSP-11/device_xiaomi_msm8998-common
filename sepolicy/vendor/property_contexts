@@ -28,6 +28,9 @@ persist.vendor.sys.pay.fido                                   u:object_r:vendor_
 persist.vendor.sys.pay.ifaa                                   u:object_r:vendor_tee_listener_prop:s0
 persist.vendor.sys.pay.soter                                  u:object_r:vendor_tee_listener_prop:s0
 
+# power-libperfmgr
+vendor.powerhal.                                              u:object_r:vendor_power_prop:s0
+
 # Radio
 ro.build.software.version                                     u:object_r:qcom_ims_prop:s0
 ril.fake_bs_flag0                                             u:object_r:vendor_radio_prop:s0

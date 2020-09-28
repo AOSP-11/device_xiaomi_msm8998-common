@@ -1,2 +1,16 @@
 allow hal_power_default sysfs_sectouch:dir search;
 allow hal_power_default sysfs_sectouch:file w_file_perms;
+
+# power-libperfmgr
+allow hal_power_default sysfs_devices_system_cpu:file rw_file_perms;
+allow hal_power_default latency_device:chr_file rw_file_perms;
+
+# To get/set powerhal state property
+set_prop(hal_power_default, vendor_power_prop)
+
+allow hal_power_default sysfs_kgsl:lnk_file rw_file_perms;
+allow hal_power_default sysfs_kgsl:file rw_file_perms;
+
+allow hal_power_default sysfs_devfreq:dir create_dir_perms;
+allow hal_power_default sysfs_devfreq:file rw_file_perms;
+allow hal_power_default device_latency:chr_file rw_file_perms;
