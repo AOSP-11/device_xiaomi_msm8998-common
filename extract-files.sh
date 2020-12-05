@@ -65,6 +65,9 @@ function blob_fixup() {
     system_ext/etc/init/dpmd.rc)
         sed -i 's|/system/product/bin/dpmd|/system_ext/bin/dpmd|g' "${2}"
         ;;
+    system_ext/etc/permissions/audiosphere.xml)
+        sed -i 's|/system/framework/audiosphere.jar|/system_ext/framework/audiosphere.jar|g' "${2}"
+        ;;
     system_ext/etc/permissions/com.qti.dpmframework.xml)
         sed -i 's|/system/product/framework/com.qti.dpmframework.jar|/system_ext/framework/com.qti.dpmframework.jar|g' "${2}"
         ;;
