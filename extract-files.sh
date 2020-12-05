@@ -60,7 +60,7 @@ fi
 function blob_fixup() {
     case "${1}" in
     lib64/libwfdnative.so)
-        patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
+        "${PATCHELF}" --remove-needed "android.hidl.base@1.0.so" "${2}"
         ;;
     system_ext/etc/init/dpmd.rc)
         sed -i 's|/system/product/bin/dpmd|/system_ext/bin/dpmd|g' "${2}"
@@ -78,32 +78,32 @@ function blob_fixup() {
         sed -i 's|name=\"android.hidl.manager-V1.0-java|name=\"android.hidl.manager@1.0-java|g' "${2}"
         ;;
     vendor/lib/hw/camera.msm8998.so)
-        patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
+        "${PATCHELF}" --remove-needed "android.hidl.base@1.0.so" "${2}"
         ;;
     vendor/lib/libFaceGrade.so)
-        patchelf --remove-needed "libandroid.so" "${2}"
+        "${PATCHELF}" --remove-needed "libandroid.so" "${2}"
         ;;
     vendor/lib/libMiCameraHal.so)
-        patchelf --replace-needed "libicuuc.so" "libicuuc-v28.so" "${2}"
-        patchelf --replace-needed "libminikin.so" "libminikin-v28.so" "${2}"
+        "${PATCHELF}" --replace-needed "libicuuc.so" "libicuuc-v28.so" "${2}"
+        "${PATCHELF}" --replace-needed "libminikin.so" "libminikin-v28.so" "${2}"
         ;;
     vendor/lib/libarcsoft_beauty_shot.so)
-        patchelf --remove-needed "libandroid.so" "${2}"
+        "${PATCHELF}" --remove-needed "libandroid.so" "${2}"
         ;;
     vendor/lib/libicuuc-v28.so)
-        patchelf --set-soname "libicuuc-v28.so" "${2}"
+        "${PATCHELF}" --set-soname "libicuuc-v28.so" "${2}"
         ;;
     vendor/lib/libminikin-v28.so)
-        patchelf --set-soname "libminikin-v28.so" "${2}"
+        "${PATCHELF}" --set-soname "libminikin-v28.so" "${2}"
         ;;
     vendor/lib/libmmcamera2_sensor_modules.so)
         sed -i 's|/data/misc/camera/camera_lsc_caldata.txt|/data/vendor/camera/camera_lsc_calib.txt|g' "${2}"
         ;;
     vendor/lib/libmmcamera2_stats_modules.so)
-        patchelf --remove-needed "libandroid.so" "${2}"
+        "${PATCHELF}" --remove-needed "libandroid.so" "${2}"
         ;;
     vendor/lib/libmpbase.so)
-        patchelf --remove-needed "libandroid.so" "${2}"
+        "${PATCHELF}" --remove-needed "libandroid.so" "${2}"
         ;;
     esac
 }
