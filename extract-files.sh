@@ -62,6 +62,18 @@ function blob_fixup() {
     lib64/libwfdnative.so)
         patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
         ;;
+    system_ext/etc/init/dpmd.rc)
+        sed -i 's|/system/product/bin/dpmd|/system_ext/bin/dpmd|g' "${2}"
+        ;;
+    system_ext/etc/permissions/com.qti.dpmframework.xml)
+        sed -i 's|/system/product/framework/com.qti.dpmframework.jar|/system_ext/framework/com.qti.dpmframework.jar|g' "${2}"
+        ;;
+    system_ext/etc/permissions/dpmapi.xml)
+        sed -i 's|/system/product/framework/dpmapi.jar|/system_ext/framework/dpmapi.jar|g' "${2}"
+        ;;
+    system_ext/etc/permissions/qcrilhook.xml)
+        sed -i 's|/product/framework/qcrilhook.jar|/system_ext/framework/qcrilhook.jar|g' "${2}"
+        ;;
     vendor/etc/permissions/qti_libpermissions.xml)
         sed -i 's|name=\"android.hidl.manager-V1.0-java|name=\"android.hidl.manager@1.0-java|g' "${2}"
         ;;
