@@ -283,13 +283,15 @@ vendor/lib64/libqmi_csi.so|ffb588ad44863278814f856e030fa25b293ed125
 vendor/lib64/libqmi_encdec.so|eedf39676bf4447cb2e3f629d1d18dcad846ab85
 vendor/lib64/libqmiservices.so|60819bb328bcd2948fd0fe0c8caa9dd67680809c
 
+# RIL - from LA.UM.9.6.2.r1-02500-89xx.0
+system_ext/framework/qti-telephony-common.jar|9d05ff6571d1efcefc14aa1771e437dcbbbd013d
+
 # RIL - from LA.UM.8.2.r1-06600-sdm660.0
 -product/app/datastatusnotification/datastatusnotification.apk:system_ext/app/datastatusnotification/datastatusnotification.apk|4685df4bb2446950bcb37da83f4acefc69bfcdc3
 -product/app/QtiTelephonyService/QtiTelephonyService.apk:system_ext/app/QtiTelephonyService/QtiTelephonyService.apk|9758fbbaa7b2a18c01a32200b3a86a4dbc798d3c
 -product/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk:system_ext/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|71d083671c3ea4cd5e287a63fb254bb0ab60ed20
 product/etc/permissions/qcrilhook.xml:system_ext/etc/permissions/qcrilhook.xml|30397e293b2c40e6b7a1d11c2a615cdd05de625a
 product/framework/qcrilhook.jar:system_ext/framework/qcrilhook.jar|23768fda90519d799e682fd058ec85b7b5cd6f89
-product/framework/qti-telephony-common.jar:system_ext/framework/qti-telephony-common.jar|14e32b1cb0fdc9d7802414e95e41376499b51b11
 vendor/bin/ATFWD-daemon|540d63133a5edb0e4e39fd0ec6bcf34939f58ca6
 vendor/bin/netmgrd|8818e9adb56f976447352585bbd44478cd2c4300
 vendor/bin/qti|fb6e4de508ddbabf9d8468247714caf810638b6c
