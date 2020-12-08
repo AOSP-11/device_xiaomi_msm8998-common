@@ -19,6 +19,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n_mr1.mk
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
+# Overlay telephony_injection
+ifeq ($(TARGET_GMS),true)
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-injection/gms
+else
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-injection/aosp
+endif
+
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
