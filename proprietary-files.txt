@@ -242,8 +242,6 @@ vendor/lib/libsmwrapper.so
 # Media
 -vendor/lib/libgpustats.so
 -vendor/lib64/libgpustats.so
-lib/libmmrtpdecoder.so:system_ext/lib/libmmrtpdecoder.so
-lib/libmmrtpencoder.so:system_ext/lib/libmmrtpencoder.so
 vendor/lib/libOmxEvrcDec.so
 vendor/lib/libOmxVpp.so
 vendor/lib/libvpphvx.so
