@@ -406,7 +406,6 @@ vendor/bin/wifidisplayhalservice|9a5bbc21cbcaa50263d2cca5f220d8f435933ac6
 vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc|04e463342cbba4c0e9c311a18238f95dec9359fd
 vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so|04334ac3883c64b6201cef433ff9c3045585890a
 vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0.so|9e1000674de86c91933598297625a71e45828dc8
-vendor/lib/libdisplayconfig.qti.so|7992c42b4cc784348381d824037216cff9922b22
 vendor/lib/libwfdcommonutils_proprietary.so|1d0b71c302a88ee30b33660e005fccdbabae904a
 vendor/lib/libwfddisplayconfig_proprietary.so|a3a23a87c0a531f887302bf9edeab90f7a68fcd8
 vendor/lib/libwfdhaldsmanager.so|da82fb77513d03875e917964a0dfcb8e0a153908
