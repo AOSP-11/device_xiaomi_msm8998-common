@@ -46,3 +46,6 @@
 
 # Vibrator HAL
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator@1\.1-service\.msm8998 u:object_r:hal_vibrator_default_exec:s0
+
+# WiFi
+/vendor/bin/wifi-mac-generator                                u:object_r:wifi-mac-generator_exec:s0
