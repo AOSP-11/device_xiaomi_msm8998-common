@@ -22,4 +22,5 @@ dontaudit hal_fingerprint_default sysfs_leds:dir search;
 
 set_prop(hal_fingerprint_default, vendor_fp_prop);
 
-allow hal_fingerprint_default sysfs_kcal:dir { search };
+allow hal_fingerprint_default sysfs_kcal:dir rw_dir_perms;
+allow hal_fingerprint_default sysfs_kcal:file rw_file_perms;

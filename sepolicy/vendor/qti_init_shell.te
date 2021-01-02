@@ -1,1 +1,4 @@
 set_prop(qti_init_shell, sensors_panel_prop);
+
+# Ignore harmless denials
+dontaudit qti_init_shell qti_init_shell:capability { dac_override dac_read_search };

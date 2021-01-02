@@ -1,2 +1,4 @@
 allow zygote input_device:dir { open read };
 allow zygote input_device:chr_file { ioctl open read write };
+allow zygote exported_camera_prop:file rw_file_perms;
+get_prop(zygote, exported_camera_prop)

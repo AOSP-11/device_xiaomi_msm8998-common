@@ -16,3 +16,4 @@ allow hal_power_default sysfs_devfreq:file rw_file_perms;
 allow hal_power_default device_latency:chr_file rw_file_perms;
 allow hal_power_default debugfs:file rw_file_perms;
 
+allow hal_power_default sysfs:file rw_file_perms;

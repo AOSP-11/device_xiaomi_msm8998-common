@@ -1,0 +1,1 @@
+allow apexd sysfs_mmc_host:file rwx_file_perms;
