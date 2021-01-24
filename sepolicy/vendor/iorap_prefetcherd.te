@@ -1,0 +1,2 @@
+allow iorap_prefetcherd radio_data_file:dir { search };
+allow iorap_prefetcherd radio_data_file:file { read getattr open };
