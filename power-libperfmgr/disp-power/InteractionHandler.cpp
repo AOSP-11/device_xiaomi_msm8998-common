@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.power@1.3-service.xiaomi_msm8998-libperfmgr"
+#define LOG_TAG "android.hardware.power@-service.pixel-libperfmgr"
 
 #include <fcntl.h>
 #include <poll.h>
 #include <sys/eventfd.h>
 #include <time.h>
 #include <unistd.h>
-#include <utils/Log.h>
+#include <log/log.h>
 #include <utils/Trace.h>
 #include <memory>
 
@@ -64,14 +64,15 @@ bool InteractionHandler::Init() {
     if (mState != INTERACTION_STATE_UNINITIALIZED)
         return true;
 
-    mIdleFd = fb_idle_open();
+    int fd = fb_idle_open();
+    if (fd < 0)
+        return false;
+    mIdleFd = fd;
 
     mEventFd = eventfd(0, EFD_NONBLOCK);
     if (mEventFd < 0) {
         ALOGE("Unable to create event fd (%d)", errno);
-        if (mIdleFd >= 0) {
-            close(mIdleFd);
-        }
+        close(mIdleFd);
         return false;
     }
 
@@ -94,9 +95,7 @@ void InteractionHandler::Exit() {
     mThread->join();
 
     close(mEventFd);
-    if (mIdleFd >= 0) {
-        close(mIdleFd);
-    }
+    close(mIdleFd);
 }
 
 void InteractionHandler::PerfLock() {
@@ -190,7 +189,6 @@ void InteractionHandler::WaitForIdle(int32_t wait_ms, int32_t timeout_ms) {
     ssize_t ret;
     struct pollfd pfd[2];
 
-
     ALOGV("%s: wait:%d timeout:%d", __func__, wait_ms, timeout_ms);
 
     pfd[0].fd = mEventFd;
@@ -204,18 +202,6 @@ void InteractionHandler::WaitForIdle(int32_t wait_ms, int32_t timeout_ms) {
         return;
     } else if (ret < 0) {
         ALOGE("%s: error in poll while waiting", __func__);
-        return;
-    }
-
-    if (mIdleFd < 0) {
-        ret = poll(pfd, 1, timeout_ms);
-        if (ret > 0) {
-            ALOGV("%s: wait for duration aborted", __func__);
-            return;
-        } else if (ret < 0) {
-            ALOGE("%s: Error on waiting for duration (%zd)", __func__, ret);
-            return;
-        }
         return;
     }
 
