@@ -56,4 +56,7 @@
     <string name="dirac_preset_country">乡村</string>
     <string name="dirac_preset_dance">舞曲</string>
     <string name="dirac_preset_metal">金属</string>
+
+    <!-- QS tile title -->
+    <string name="dirac_qs_tile_title">米音</string>
 </resources>
