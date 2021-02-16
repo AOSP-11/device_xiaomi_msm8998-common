@@ -26,12 +26,10 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceScreen;
 
-import org.omnirom.device.Preference.ButtonSwapPreference;
 import org.omnirom.device.Preference.FastChargePreference;
 import org.omnirom.device.Preference.S2SVibratorStrengthPreference;
 import org.omnirom.device.Preference.SweepToSleepPreference;
 
-import static org.omnirom.device.Preference.ButtonSwapPreference.BUTTONS_SWAP_KEY;
 import static org.omnirom.device.Preference.FastChargePreference.USB_FAST_CHARGE_KEY;
 import static org.omnirom.device.Preference.S2SVibratorStrengthPreference.KEY_S2S_VIBSTRENGTH;
 import static org.omnirom.device.Preference.SweepToSleepPreference.S2S_KEY;
@@ -40,7 +38,6 @@ public final class DeviceSettings extends PreferenceFragment {
 
     private static final String KEY_CATEGORY_DISPLAY = "display";
     private static final String KEY_CATEGORY_KCAL = "kcal";
-    private static final String KEY_CATEGORY_HW_BUTTONS = "hw_buttons";
     private static final String KEY_CATEGORY_USB_FASTCHARGE = "usb_fastcharge";
 
     private final String KEY_DEVICE_DOZE = "device_doze";
@@ -52,12 +49,10 @@ public final class DeviceSettings extends PreferenceFragment {
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
-        ButtonSwapPreference mButtonSwap = (ButtonSwapPreference) prefSet.findPreference(BUTTONS_SWAP_KEY);
         FastChargePreference mFastCharge = (FastChargePreference) findPreference(USB_FAST_CHARGE_KEY);
         SweepToSleepPreference mSweep = (SweepToSleepPreference) findPreference(S2S_KEY);
         S2SVibratorStrengthPreference mVibratorStrengthS2S = (S2SVibratorStrengthPreference) findPreference(KEY_S2S_VIBSTRENGTH);
 
-        mButtonSwap.setEnabled(ButtonSwapPreference.FEATURE.isSupported());
         mFastCharge.setEnabled(FastChargePreference.FEATURE.isSupported());
         mSweep.setEnabled(SweepToSleepPreference.FEATURE.isSupported());
         mVibratorStrengthS2S.setEnabled(S2SVibratorStrengthPreference.FEATURE.isSupported());

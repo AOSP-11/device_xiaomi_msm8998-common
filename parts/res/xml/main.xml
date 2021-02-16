@@ -59,28 +59,6 @@
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
-        android:key="hw_buttons"
-        android:title="@string/hw_buttons_title">
-
-        <org.omnirom.device.Preference.ButtonSwapPreference
-            android:defaultValue="false"
-            android:icon="@drawable/ic_swap_btn"
-            android:key="buttons_swap"
-            android:summary="@string/swap_hw_buttons_summary"
-            android:title="@string/swap_hw_buttons_title" />
-
-        <org.omnirom.device.Preference.BacklightPreference
-            android:icon="@drawable/ic_led_btn"
-            android:iconSpaceReserved="true"
-            android:key="btn_brightness"
-            android:summary="@string/btn_led_summary"
-            android:title="@string/btn_led_title"
-            android:max="255"
-            android:min="0"
-            android:defaultValue="255"/>
-    </androidx.preference.PreferenceCategory>
-
-    <androidx.preference.PreferenceCategory
         android:key="usb_fastcharge"
         android:title="@string/usb_fastcharge_title">
 
