@@ -85,6 +85,7 @@ function blob_fixup() {
         ;;
     vendor/lib/hw/camera.msm8998.so)
         "${PATCHELF}" --remove-needed "android.hidl.base@1.0.so" "${2}"
+        "${PATCHELF}" --replace-needed "libminikin.so" "libminikin-v28.so" "${2}"
         ;;
     vendor/lib/libFaceGrade.so)
         "${PATCHELF}" --remove-needed "libandroid.so" "${2}"
@@ -101,6 +102,7 @@ function blob_fixup() {
         ;;
     vendor/lib/libminikin-v28.so)
         "${PATCHELF}" --set-soname "libminikin-v28.so" "${2}"
+        "${PATCHELF}" --replace-needed "libicuuc.so" "libicuuc-v28.so" "${2}"
         ;;
     vendor/lib/libmmcamera2_sensor_modules.so)
         sed -i 's|/data/misc/camera/camera_lsc_caldata.txt|/data/vendor/camera/camera_lsc_calib.txt|g' "${2}"
