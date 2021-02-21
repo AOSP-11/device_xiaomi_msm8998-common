@@ -370,9 +370,7 @@ PRODUCT_PACKAGES += \
 
 # Soong
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH) \
-    hardware/google/interfaces \
-    hardware/google/pixel
+    $(LOCAL_PATH)
 
 # Telephony
 PRODUCT_PACKAGES += \
