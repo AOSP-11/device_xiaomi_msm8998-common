@@ -184,9 +184,9 @@ vendor/lib64/libsdm-disp-vndapis.so|a4e271a373b83b1e04afdbff63ab37154aead5f9
 vendor/lib64/libsdmextension.so|913503f002aa2afbeca90d429bac4bff4a2266e0
 vendor/lib64/libtinyxml2_1.so|70942325afdd14eedcf11b3fbbfbc3d98f42f8dc
 
-# Graphics (Vulkan) - from RP1A.201005.004
-vendor/lib/hw/vulkan.adreno.so:vendor/lib/hw/vulkan.msm8998.so|5ec0916dcb1371845a30e00f823be25c29ae102c
-vendor/lib64/hw/vulkan.adreno.so:vendor/lib64/hw/vulkan.msm8998.so|2cd751f202e3e4c2566f0950dd41bf78fa0e8eef
+# Graphics (Vulkan) - from LA.UM.8.2.r1-07500-sdm660.0
+vendor/lib/hw/vulkan.sdm660.so:vendor/lib/hw/vulkan.msm8998.so|704d421e098d832de8049315df8951202a8bcf26
+vendor/lib64/hw/vulkan.sdm660.so:vendor/lib64/hw/vulkan.msm8998.so|5616c7938c8d80fd1f1ca4c80ea20b1497246c3f
 
 # IMS - from LA.UM.9.6.2.r1-02500-89xx.0
 -system_ext/priv-app/ims/ims.apk|fcc65426a824fcf4a79d22dc6989d830610596bd
