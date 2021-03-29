@@ -246,7 +246,9 @@ vendor/lib64/vendor.qti.hardware.radio.ims@1.3.so|216a255dfcc703af13a3ce37bcb60b
 vendor/lib64/vendor.qti.hardware.radio.ims@1.4.so|762c58914bb1cf39391efe6e8b375ccffec9392a
 vendor/lib64/vendor.qti.hardware.radio.ims@1.5.so|f3891d519dd10a80ea824f7de2242532e8d4c06f
 vendor/lib64/vendor.qti.hardware.radio.ims@1.6.so|42874a8a0bb858dcd3b5ae08bbe919c62f9c500b
+vendor/lib64/vendor.qti.ims.callcapability@1.0.so|fc58edfda9d1da3393f2aac90eb13e5b654a9b04
 vendor/lib64/vendor.qti.ims.callinfo@1.0.so|cce7168d30b387a7261902fe18776a2c6a93ebb7
+vendor/lib64/vendor.qti.ims.factory@1.0.so|6e58e9b7756ef5ccf881f4024f978277b6dea2c4
 
 # Peripheral manager - from LA.UM.8.2.r1-07500-sdm660.0
 vendor/bin/pm-proxy|3182c937d93cc02c6721c053f57fc6794ad7edb3
