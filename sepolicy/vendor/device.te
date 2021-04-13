@@ -1,5 +1,2 @@
 # Fingerprint
 type fingerprint_device, dev_type;
-
-# power-libperfmgr
-type latency_device, dev_type;
