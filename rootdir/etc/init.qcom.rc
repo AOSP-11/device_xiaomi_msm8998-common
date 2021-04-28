@@ -54,14 +54,6 @@ on post-fs-data
     # Create folder of camera
     mkdir /data/vendor/camera 0770 camera camera
 
-    setprop persist.camera.stats.test 5
-
-    # Create directories for tombstones
-    mkdir /data/tombstones/modem 0771 system system
-    mkdir /data/tombstones/lpass 0771 system system
-    mkdir /data/tombstones/wcnss 0771 system system
-    mkdir /data/tombstones/dsps 0771 system system
-
     # Create directory for tftp
     mkdir /data/vendor/tombstones 0771 system system
 
@@ -73,6 +65,12 @@ on post-fs-data
     mkdir /data/vendor/wifi 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
+
+    # Create netmgr log dir
+    mkdir /data/vendor/netmgr 0770 radio radio
+
+    # Create QTI dir for logs
+    mkdir /data/vendor/dataqti 0770 radio radio
 
     # Create the directories used by CnE subsystem
     mkdir /data/vendor/connectivity 0771 radio radio
@@ -145,16 +143,25 @@ on boot
     chown system system /sys/kernel/debug/msm_core/enable
     chown system system /sys/kernel/debug/msm_core/ptable
 
-    # This location is used by QCRIL to host UNIX domain
-    # socket files used for internal IPC within QCRIL
-    # modules
+    # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 2770 radio radio
+    mkdir /dev/socket/qmux_audio 2770 media audio
+    mkdir /dev/socket/qmux_bluetooth 2770 bluetooth bluetooth
+    mkdir /dev/socket/qmux_gps 2770 gps gps
+
+    # Create NETMGR daemon socket area
+    mkdir /dev/socket/netmgr 0750 radio radio
 
     # Touchscreen
     chown system system /proc/touchpanel/double_tap_enable
     chown system system /proc/touchpanel/reversed_keys_enable
     chmod 0660 /proc/touchpanel/double_tap_enable
     chmod 0660 /proc/touchpanel/reversed_keys_enable
+
+    # Assign TCP buffer thresholds to be ceiling value of technology maximums
+    # Increased technology maximums should be reflected here.
+    write /proc/sys/net/core/rmem_max 16777216
+    write /proc/sys/net/core/wmem_max 8388608
 
     # To prevent out of order acknowledgements from making
     # connection tracking to treat them as not belonging to
@@ -177,12 +184,6 @@ on property:sys.boot_completed=1
 
 on property:ro.vendor.ril.mbn_copy_completed=1
     write /data/vendor/radio/copy_complete 1
-
-service vendor.cnd /vendor/bin/cnd
-    class main
-    user system
-    group system wifi inet radio wakelock net_admin
-    writepid /dev/cpuset/system-background/tasks
 
 service vendor.irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
@@ -222,7 +223,7 @@ service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
     capabilities NET_ADMIN
     writepid /dev/cpuset/system-background/tasks
 
-on property:sys.powerctl=*
+on property:sys.shutdown.requested=*
     stop vendor.cnss-daemon
 
 service vendor.loc_launcher /vendor/bin/loc_launcher
@@ -234,6 +235,7 @@ service vendor.loc_launcher /vendor/bin/loc_launcher
 service vendor.qcom-sh /vendor/bin/init.qcom.sh
     class late_start
     user root
+    group root system radio
     oneshot
 
 service vendor.qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
