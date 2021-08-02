@@ -25,6 +25,8 @@ import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
+import org.omnirom.device.Preference.BacklightPreference;
+import org.omnirom.device.Preference.ButtonSwapPreference;
 import org.omnirom.device.Preference.FastChargePreference;
 import org.omnirom.device.Preference.S2SVibratorStrengthPreference;
 import org.omnirom.device.Preference.SweepToSleepPreference;
@@ -37,6 +39,8 @@ public final class Startup extends BroadcastReceiver {
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
 
+            BacklightPreference.FEATURE.restore(sp);
+            ButtonSwapPreference.FEATURE.restore(sp);
             FastChargePreference.FEATURE.restore(sp);
             SweepToSleepPreference.FEATURE.restore(sp);
             S2SVibratorStrengthPreference.FEATURE.restore(sp);
